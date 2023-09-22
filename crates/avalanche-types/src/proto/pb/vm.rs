@@ -2,458 +2,458 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InitializeRequest {
-    #[prost(uint32, tag="1")]
+    #[prost(uint32, tag = "1")]
     pub network_id: u32,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub subnet_id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub node_id: ::prost::bytes::Bytes,
     /// public_key is the BLS public key that would correspond with any signatures
     /// produced by the warp messaging signer
-    #[prost(bytes="bytes", tag="5")]
+    #[prost(bytes = "bytes", tag = "5")]
     pub public_key: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="6")]
+    #[prost(bytes = "bytes", tag = "6")]
     pub x_chain_id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="7")]
+    #[prost(bytes = "bytes", tag = "7")]
     pub c_chain_id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="8")]
+    #[prost(bytes = "bytes", tag = "8")]
     pub avax_asset_id: ::prost::bytes::Bytes,
-    #[prost(string, tag="9")]
+    #[prost(string, tag = "9")]
     pub chain_data_dir: ::prost::alloc::string::String,
-    #[prost(bytes="bytes", tag="10")]
+    #[prost(bytes = "bytes", tag = "10")]
     pub genesis_bytes: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="11")]
+    #[prost(bytes = "bytes", tag = "11")]
     pub upgrade_bytes: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="12")]
+    #[prost(bytes = "bytes", tag = "12")]
     pub config_bytes: ::prost::bytes::Bytes,
-    #[prost(message, repeated, tag="13")]
+    #[prost(message, repeated, tag = "13")]
     pub db_servers: ::prost::alloc::vec::Vec<VersionedDbServer>,
     /// server_addr is the address of the gRPC server which serves
     /// the messenger, keystore, shared memory, blockchain alias,
     /// subnet alias, and appSender services
-    #[prost(string, tag="14")]
+    #[prost(string, tag = "14")]
     pub server_addr: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InitializeResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub last_accepted_id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub last_accepted_parent_id: ::prost::bytes::Bytes,
-    #[prost(uint64, tag="3")]
+    #[prost(uint64, tag = "3")]
     pub height: u64,
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub bytes: ::prost::bytes::Bytes,
-    #[prost(message, optional, tag="5")]
+    #[prost(message, optional, tag = "5")]
     pub timestamp: ::core::option::Option<super::google::protobuf::Timestamp>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VersionedDbServer {
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub version: ::prost::alloc::string::String,
     /// server_addr is the address of the gRPC server which serves the
     /// Database service
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub server_addr: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SetStateRequest {
-    #[prost(enumeration="State", tag="1")]
+    #[prost(enumeration = "State", tag = "1")]
     pub state: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SetStateResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub last_accepted_id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub last_accepted_parent_id: ::prost::bytes::Bytes,
-    #[prost(uint64, tag="3")]
+    #[prost(uint64, tag = "3")]
     pub height: u64,
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub bytes: ::prost::bytes::Bytes,
-    #[prost(message, optional, tag="5")]
+    #[prost(message, optional, tag = "5")]
     pub timestamp: ::core::option::Option<super::google::protobuf::Timestamp>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateHandlersResponse {
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub handlers: ::prost::alloc::vec::Vec<Handler>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateStaticHandlersResponse {
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub handlers: ::prost::alloc::vec::Vec<Handler>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Handler {
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub prefix: ::prost::alloc::string::String,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub lock_options: u32,
     /// server_addr is the address of the gRPC server which serves the
     /// HTTP service
-    #[prost(string, tag="3")]
+    #[prost(string, tag = "3")]
     pub server_addr: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BuildBlockRequest {
-    #[prost(uint64, optional, tag="1")]
+    #[prost(uint64, optional, tag = "1")]
     pub p_chain_height: ::core::option::Option<u64>,
 }
 /// Note: The status of a freshly built block is assumed to be Processing.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BuildBlockResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub parent_id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub bytes: ::prost::bytes::Bytes,
-    #[prost(uint64, tag="4")]
+    #[prost(uint64, tag = "4")]
     pub height: u64,
-    #[prost(message, optional, tag="5")]
+    #[prost(message, optional, tag = "5")]
     pub timestamp: ::core::option::Option<super::google::protobuf::Timestamp>,
-    #[prost(bool, tag="6")]
+    #[prost(bool, tag = "6")]
     pub verify_with_context: bool,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParseBlockRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub bytes: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParseBlockResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub parent_id: ::prost::bytes::Bytes,
-    #[prost(enumeration="Status", tag="3")]
+    #[prost(enumeration = "Status", tag = "3")]
     pub status: i32,
-    #[prost(uint64, tag="4")]
+    #[prost(uint64, tag = "4")]
     pub height: u64,
-    #[prost(message, optional, tag="5")]
+    #[prost(message, optional, tag = "5")]
     pub timestamp: ::core::option::Option<super::google::protobuf::Timestamp>,
-    #[prost(bool, tag="6")]
+    #[prost(bool, tag = "6")]
     pub verify_with_context: bool,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetBlockRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub id: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetBlockResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub parent_id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub bytes: ::prost::bytes::Bytes,
-    #[prost(enumeration="Status", tag="3")]
+    #[prost(enumeration = "Status", tag = "3")]
     pub status: i32,
-    #[prost(uint64, tag="4")]
+    #[prost(uint64, tag = "4")]
     pub height: u64,
-    #[prost(message, optional, tag="5")]
+    #[prost(message, optional, tag = "5")]
     pub timestamp: ::core::option::Option<super::google::protobuf::Timestamp>,
     /// used to propagate database.ErrNotFound through RPC
-    #[prost(enumeration="Error", tag="6")]
+    #[prost(enumeration = "Error", tag = "6")]
     pub err: i32,
-    #[prost(bool, tag="7")]
+    #[prost(bool, tag = "7")]
     pub verify_with_context: bool,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SetPreferenceRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub id: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockVerifyRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub bytes: ::prost::bytes::Bytes,
     /// If set, the VM server casts the block to a \[block.WithVerifyContext\] and
     /// calls \[VerifyWithContext\] instead of \[Verify\].
-    #[prost(uint64, optional, tag="2")]
+    #[prost(uint64, optional, tag = "2")]
     pub p_chain_height: ::core::option::Option<u64>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockVerifyResponse {
-    #[prost(message, optional, tag="1")]
+    #[prost(message, optional, tag = "1")]
     pub timestamp: ::core::option::Option<super::google::protobuf::Timestamp>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockAcceptRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub id: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockRejectRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub id: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HealthResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub details: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VersionResponse {
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub version: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppRequestMsg {
     /// The node that sent us this request
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub node_id: ::prost::bytes::Bytes,
     /// The ID of this request
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
     /// deadline for this request
-    #[prost(message, optional, tag="3")]
+    #[prost(message, optional, tag = "3")]
     pub deadline: ::core::option::Option<super::google::protobuf::Timestamp>,
     /// The request body
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub request: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppRequestFailedMsg {
     /// The node that we failed to get a response from
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub node_id: ::prost::bytes::Bytes,
     /// The ID of the request we sent and didn't get a response to
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppResponseMsg {
     /// The node that we got a response from
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub node_id: ::prost::bytes::Bytes,
     /// Request ID of request that this is in response to
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
     /// The response body
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub response: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppGossipMsg {
     /// The node that sent us a gossip message
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub node_id: ::prost::bytes::Bytes,
     /// The message body
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub msg: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CrossChainAppRequestMsg {
     /// The chain that sent us this request
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
     /// The ID of this request
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
     /// deadline for this request
-    #[prost(message, optional, tag="3")]
+    #[prost(message, optional, tag = "3")]
     pub deadline: ::core::option::Option<super::google::protobuf::Timestamp>,
     /// The request body
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub request: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CrossChainAppRequestFailedMsg {
     /// The chain that we failed to get a response from
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
     /// The ID of the request we sent and didn't get a response to
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CrossChainAppResponseMsg {
     /// The chain that we got a response from
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
     /// Request ID of request that this is in response to
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
     /// The response body
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub response: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConnectedRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub node_id: ::prost::bytes::Bytes,
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub version: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DisconnectedRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub node_id: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetAncestorsRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub blk_id: ::prost::bytes::Bytes,
-    #[prost(int32, tag="2")]
+    #[prost(int32, tag = "2")]
     pub max_blocks_num: i32,
-    #[prost(int32, tag="3")]
+    #[prost(int32, tag = "3")]
     pub max_blocks_size: i32,
-    #[prost(int64, tag="4")]
+    #[prost(int64, tag = "4")]
     pub max_blocks_retrival_time: i64,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetAncestorsResponse {
-    #[prost(bytes="bytes", repeated, tag="1")]
+    #[prost(bytes = "bytes", repeated, tag = "1")]
     pub blks_bytes: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BatchedParseBlockRequest {
-    #[prost(bytes="bytes", repeated, tag="1")]
+    #[prost(bytes = "bytes", repeated, tag = "1")]
     pub request: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BatchedParseBlockResponse {
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub response: ::prost::alloc::vec::Vec<ParseBlockResponse>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerifyHeightIndexResponse {
-    #[prost(enumeration="Error", tag="1")]
+    #[prost(enumeration = "Error", tag = "1")]
     pub err: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetBlockIdAtHeightRequest {
-    #[prost(uint64, tag="1")]
+    #[prost(uint64, tag = "1")]
     pub height: u64,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetBlockIdAtHeightResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub blk_id: ::prost::bytes::Bytes,
-    #[prost(enumeration="Error", tag="2")]
+    #[prost(enumeration = "Error", tag = "2")]
     pub err: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GatherResponse {
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub metric_families: ::prost::alloc::vec::Vec<super::io::prometheus::client::MetricFamily>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StateSyncEnabledResponse {
-    #[prost(bool, tag="1")]
+    #[prost(bool, tag = "1")]
     pub enabled: bool,
-    #[prost(enumeration="Error", tag="2")]
+    #[prost(enumeration = "Error", tag = "2")]
     pub err: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetOngoingSyncStateSummaryResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub id: ::prost::bytes::Bytes,
-    #[prost(uint64, tag="2")]
+    #[prost(uint64, tag = "2")]
     pub height: u64,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub bytes: ::prost::bytes::Bytes,
-    #[prost(enumeration="Error", tag="4")]
+    #[prost(enumeration = "Error", tag = "4")]
     pub err: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetLastStateSummaryResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub id: ::prost::bytes::Bytes,
-    #[prost(uint64, tag="2")]
+    #[prost(uint64, tag = "2")]
     pub height: u64,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub bytes: ::prost::bytes::Bytes,
-    #[prost(enumeration="Error", tag="4")]
+    #[prost(enumeration = "Error", tag = "4")]
     pub err: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParseStateSummaryRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub bytes: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParseStateSummaryResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub id: ::prost::bytes::Bytes,
-    #[prost(uint64, tag="2")]
+    #[prost(uint64, tag = "2")]
     pub height: u64,
-    #[prost(enumeration="Error", tag="3")]
+    #[prost(enumeration = "Error", tag = "3")]
     pub err: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetStateSummaryRequest {
-    #[prost(uint64, tag="1")]
+    #[prost(uint64, tag = "1")]
     pub height: u64,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetStateSummaryResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub bytes: ::prost::bytes::Bytes,
-    #[prost(enumeration="Error", tag="3")]
+    #[prost(enumeration = "Error", tag = "3")]
     pub err: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StateSummaryAcceptRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub bytes: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StateSummaryAcceptResponse {
-    #[prost(enumeration="state_summary_accept_response::Mode", tag="1")]
+    #[prost(enumeration = "state_summary_accept_response::Mode", tag = "1")]
     pub mode: i32,
-    #[prost(enumeration="Error", tag="2")]
+    #[prost(enumeration = "Error", tag = "2")]
     pub err: i32,
 }
 /// Nested message and enum types in `StateSummaryAcceptResponse`.

@@ -2,16 +2,16 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetDatabaseRequest {
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub username: ::prost::alloc::string::String,
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub password: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetDatabaseResponse {
     /// server_addr is the address of the gRPC server hosting the Database service
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub server_addr: ::prost::alloc::string::String,
 }
 /// Encoded file descriptor set for the `keystore` package

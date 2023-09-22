@@ -2,95 +2,94 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BatchPut {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub key: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub value: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BatchDelete {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub key: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Batch {
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub puts: ::prost::alloc::vec::Vec<BatchPut>,
-    #[prost(message, repeated, tag="2")]
+    #[prost(message, repeated, tag = "2")]
     pub deletes: ::prost::alloc::vec::Vec<BatchDelete>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AtomicRequest {
-    #[prost(bytes="bytes", repeated, tag="1")]
+    #[prost(bytes = "bytes", repeated, tag = "1")]
     pub remove_requests: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
-    #[prost(message, repeated, tag="2")]
+    #[prost(message, repeated, tag = "2")]
     pub put_requests: ::prost::alloc::vec::Vec<Element>,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub peer_chain_id: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Element {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub key: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub value: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", repeated, tag="3")]
+    #[prost(bytes = "bytes", repeated, tag = "3")]
     pub traits: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub peer_chain_id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", repeated, tag="2")]
+    #[prost(bytes = "bytes", repeated, tag = "2")]
     pub keys: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetResponse {
-    #[prost(bytes="bytes", repeated, tag="1")]
+    #[prost(bytes = "bytes", repeated, tag = "1")]
     pub values: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IndexedRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub peer_chain_id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", repeated, tag="2")]
+    #[prost(bytes = "bytes", repeated, tag = "2")]
     pub traits: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub start_trait: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub start_key: ::prost::bytes::Bytes,
-    #[prost(int32, tag="5")]
+    #[prost(int32, tag = "5")]
     pub limit: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IndexedResponse {
-    #[prost(bytes="bytes", repeated, tag="1")]
+    #[prost(bytes = "bytes", repeated, tag = "1")]
     pub values: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub last_trait: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub last_key: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApplyRequest {
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub requests: ::prost::alloc::vec::Vec<AtomicRequest>,
-    #[prost(message, repeated, tag="2")]
+    #[prost(message, repeated, tag = "2")]
     pub batches: ::prost::alloc::vec::Vec<Batch>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ApplyResponse {
-}
+pub struct ApplyResponse {}
 /// Encoded file descriptor set for the `sharedmemory` package
 pub const FILE_DESCRIPTOR_SET: &[u8] = &[
     0x0a, 0xa2, 0x19, 0x0a, 0x1f, 0x73, 0x68, 0x61, 0x72, 0x65, 0x64, 0x6d, 0x65, 0x6d, 0x6f, 0x72,

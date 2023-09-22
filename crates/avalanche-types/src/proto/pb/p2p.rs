@@ -7,7 +7,10 @@ pub struct Message {
     /// NOTES
     /// Use "oneof" for each message type and set rest to null if not used.
     /// That is because when the compression is enabled, we don't want to include uncompressed fields.
-    #[prost(oneof="message::Message", tags="1, 2, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33")]
+    #[prost(
+        oneof = "message::Message",
+        tags = "1, 2, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33"
+    )]
     pub message: ::core::option::Option<message::Message>,
 }
 /// Nested message and enum types in `Message`.
@@ -16,71 +19,70 @@ pub mod message {
     /// Use "oneof" for each message type and set rest to null if not used.
     /// That is because when the compression is enabled, we don't want to include uncompressed fields.
     #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Message {
         /// Gzip-compressed bytes of a "p2p.Message" whose "oneof" "message" field is
         /// NOT compressed_* BUT one of the message types (e.g. ping, pong, etc.).
         /// This field is only set if the message type supports compression.
-        #[prost(bytes, tag="1")]
+        #[prost(bytes, tag = "1")]
         CompressedGzip(::prost::bytes::Bytes),
         /// zstd-compressed bytes of a "p2p.Message" whose "oneof" "message" field is
         /// NOT compressed_* BUT one of the message types (e.g. ping, pong, etc.).
         /// This field is only set if the message type supports compression.
-        #[prost(bytes, tag="2")]
+        #[prost(bytes, tag = "2")]
         CompressedZstd(::prost::bytes::Bytes),
         // Fields lower than 10 are reserved for other compression algorithms.
         // TODO: support COMPRESS_SNAPPY
-
         /// Network messages:
-        #[prost(message, tag="11")]
+        #[prost(message, tag = "11")]
         Ping(super::Ping),
-        #[prost(message, tag="12")]
+        #[prost(message, tag = "12")]
         Pong(super::Pong),
-        #[prost(message, tag="13")]
+        #[prost(message, tag = "13")]
         Version(super::Version),
-        #[prost(message, tag="14")]
+        #[prost(message, tag = "14")]
         PeerList(super::PeerList),
         /// State-sync messages:
-        #[prost(message, tag="15")]
+        #[prost(message, tag = "15")]
         GetStateSummaryFrontier(super::GetStateSummaryFrontier),
-        #[prost(message, tag="16")]
+        #[prost(message, tag = "16")]
         StateSummaryFrontier(super::StateSummaryFrontier),
-        #[prost(message, tag="17")]
+        #[prost(message, tag = "17")]
         GetAcceptedStateSummary(super::GetAcceptedStateSummary),
-        #[prost(message, tag="18")]
+        #[prost(message, tag = "18")]
         AcceptedStateSummary(super::AcceptedStateSummary),
         /// Bootstrapping messages:
-        #[prost(message, tag="19")]
+        #[prost(message, tag = "19")]
         GetAcceptedFrontier(super::GetAcceptedFrontier),
-        #[prost(message, tag="20")]
+        #[prost(message, tag = "20")]
         AcceptedFrontier(super::AcceptedFrontier),
-        #[prost(message, tag="21")]
+        #[prost(message, tag = "21")]
         GetAccepted(super::GetAccepted),
-        #[prost(message, tag="22")]
+        #[prost(message, tag = "22")]
         Accepted(super::Accepted),
-        #[prost(message, tag="23")]
+        #[prost(message, tag = "23")]
         GetAncestors(super::GetAncestors),
-        #[prost(message, tag="24")]
+        #[prost(message, tag = "24")]
         Ancestors(super::Ancestors),
         /// Consensus messages:
-        #[prost(message, tag="25")]
+        #[prost(message, tag = "25")]
         Get(super::Get),
-        #[prost(message, tag="26")]
+        #[prost(message, tag = "26")]
         Put(super::Put),
-        #[prost(message, tag="27")]
+        #[prost(message, tag = "27")]
         PushQuery(super::PushQuery),
-        #[prost(message, tag="28")]
+        #[prost(message, tag = "28")]
         PullQuery(super::PullQuery),
-        #[prost(message, tag="29")]
+        #[prost(message, tag = "29")]
         Chits(super::Chits),
         /// App messages:
-        #[prost(message, tag="30")]
+        #[prost(message, tag = "30")]
         AppRequest(super::AppRequest),
-        #[prost(message, tag="31")]
+        #[prost(message, tag = "31")]
         AppResponse(super::AppResponse),
-        #[prost(message, tag="32")]
+        #[prost(message, tag = "32")]
         AppGossip(super::AppGossip),
-        #[prost(message, tag="33")]
+        #[prost(message, tag = "33")]
         PeerListAck(super::PeerListAck),
     }
 }
@@ -92,10 +94,10 @@ pub mod message {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Ping {
     /// uptime is the primary network uptime percentage.
-    #[prost(uint32, tag="1")]
+    #[prost(uint32, tag = "1")]
     pub uptime: u32,
     /// subnet_uptimes contains subnet uptime percentages.
-    #[prost(message, repeated, tag="2")]
+    #[prost(message, repeated, tag = "2")]
     pub subnet_uptimes: ::prost::alloc::vec::Vec<SubnetUptime>,
 }
 /// Contains subnet id and the related observed subnet uptime of the message
@@ -103,9 +105,9 @@ pub struct Ping {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SubnetUptime {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub subnet_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub uptime: u32,
 }
 /// Contains the uptime percentage of the message receiver (remote peer)
@@ -116,10 +118,10 @@ pub struct SubnetUptime {
 pub struct Pong {
     /// Deprecated: remove all these fields in the future, but keep the message.
     /// uptime is the primary network uptime percentage.
-    #[prost(uint32, tag="1")]
+    #[prost(uint32, tag = "1")]
     pub uptime: u32,
     /// subnet_uptimes contains subnet uptime percentages.
-    #[prost(message, repeated, tag="2")]
+    #[prost(message, repeated, tag = "2")]
     pub subnet_uptimes: ::prost::alloc::vec::Vec<SubnetUptime>,
 }
 /// The first outbound message that the local node sends to its remote peer
@@ -132,38 +134,38 @@ pub struct Pong {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Version {
-    #[prost(uint32, tag="1")]
+    #[prost(uint32, tag = "1")]
     pub network_id: u32,
-    #[prost(uint64, tag="2")]
+    #[prost(uint64, tag = "2")]
     pub my_time: u64,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub ip_addr: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="4")]
+    #[prost(uint32, tag = "4")]
     pub ip_port: u32,
-    #[prost(string, tag="5")]
+    #[prost(string, tag = "5")]
     pub my_version: ::prost::alloc::string::String,
-    #[prost(uint64, tag="6")]
+    #[prost(uint64, tag = "6")]
     pub my_version_time: u64,
-    #[prost(bytes="bytes", tag="7")]
+    #[prost(bytes = "bytes", tag = "7")]
     pub sig: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", repeated, tag="8")]
+    #[prost(bytes = "bytes", repeated, tag = "8")]
     pub tracked_subnets: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
 }
 /// ref. <https://pkg.go.dev/github.com/ava-labs/avalanchego/utils/ips#ClaimedIPPort>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClaimedIpPort {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub x509_certificate: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub ip_addr: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="3")]
+    #[prost(uint32, tag = "3")]
     pub ip_port: u32,
-    #[prost(uint64, tag="4")]
+    #[prost(uint64, tag = "4")]
     pub timestamp: u64,
-    #[prost(bytes="bytes", tag="5")]
+    #[prost(bytes = "bytes", tag = "5")]
     pub signature: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="6")]
+    #[prost(bytes = "bytes", tag = "6")]
     pub tx_id: ::prost::bytes::Bytes,
 }
 /// Message that contains a list of peer information (IP, certs, etc.)
@@ -176,7 +178,7 @@ pub struct ClaimedIpPort {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PeerList {
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub claimed_ip_ports: ::prost::alloc::vec::Vec<ClaimedIpPort>,
 }
 /// "peer_ack" is sent in response to a "peer_list" message. The "tx_id" should
@@ -189,9 +191,9 @@ pub struct PeerList {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PeerAck {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub tx_id: ::prost::bytes::Bytes,
-    #[prost(uint64, tag="2")]
+    #[prost(uint64, tag = "2")]
     pub timestamp: u64,
 }
 /// Message that responds to a peer_list message containing the AddValidatorTxIDs
@@ -199,49 +201,49 @@ pub struct PeerAck {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PeerListAck {
-    #[prost(message, repeated, tag="2")]
+    #[prost(message, repeated, tag = "2")]
     pub peer_acks: ::prost::alloc::vec::Vec<PeerAck>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetStateSummaryFrontier {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(uint64, tag="3")]
+    #[prost(uint64, tag = "3")]
     pub deadline: u64,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StateSummaryFrontier {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub summary: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetAcceptedStateSummary {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(uint64, tag="3")]
+    #[prost(uint64, tag = "3")]
     pub deadline: u64,
-    #[prost(uint64, repeated, tag="4")]
+    #[prost(uint64, repeated, tag = "4")]
     pub heights: ::prost::alloc::vec::Vec<u64>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AcceptedStateSummary {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(bytes="bytes", repeated, tag="3")]
+    #[prost(bytes = "bytes", repeated, tag = "3")]
     pub summary_ids: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
 }
 /// Message to request for the accepted frontier of the "remote" peer.
@@ -256,13 +258,13 @@ pub struct AcceptedStateSummary {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetAcceptedFrontier {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(uint64, tag="3")]
+    #[prost(uint64, tag = "3")]
     pub deadline: u64,
-    #[prost(enumeration="EngineType", tag="4")]
+    #[prost(enumeration = "EngineType", tag = "4")]
     pub engine_type: i32,
 }
 /// Message that contains the list of accepted frontier in response to
@@ -273,11 +275,11 @@ pub struct GetAcceptedFrontier {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AcceptedFrontier {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub container_id: ::prost::bytes::Bytes,
 }
 /// Message to request for the accepted blocks/vertices of the "remote" peer.
@@ -290,15 +292,15 @@ pub struct AcceptedFrontier {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetAccepted {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(uint64, tag="3")]
+    #[prost(uint64, tag = "3")]
     pub deadline: u64,
-    #[prost(bytes="bytes", repeated, tag="4")]
+    #[prost(bytes = "bytes", repeated, tag = "4")]
     pub container_ids: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
-    #[prost(enumeration="EngineType", tag="5")]
+    #[prost(enumeration = "EngineType", tag = "5")]
     pub engine_type: i32,
 }
 /// Message that contains the list of accepted block/vertex IDs in response to
@@ -311,11 +313,11 @@ pub struct GetAccepted {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Accepted {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(bytes="bytes", repeated, tag="3")]
+    #[prost(bytes = "bytes", repeated, tag = "3")]
     pub container_ids: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
 }
 /// Message that requests for the ancestors (parents) of the specified container ID.
@@ -327,15 +329,15 @@ pub struct Accepted {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetAncestors {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(uint64, tag="3")]
+    #[prost(uint64, tag = "3")]
     pub deadline: u64,
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub container_id: ::prost::bytes::Bytes,
-    #[prost(enumeration="EngineType", tag="5")]
+    #[prost(enumeration = "EngineType", tag = "5")]
     pub engine_type: i32,
 }
 /// Message that contains the container bytes of the ancestors
@@ -346,11 +348,11 @@ pub struct GetAncestors {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Ancestors {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(bytes="bytes", repeated, tag="3")]
+    #[prost(bytes = "bytes", repeated, tag = "3")]
     pub containers: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
 }
 /// Message that requests for the container data.
@@ -360,15 +362,15 @@ pub struct Ancestors {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Get {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(uint64, tag="3")]
+    #[prost(uint64, tag = "3")]
     pub deadline: u64,
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub container_id: ::prost::bytes::Bytes,
-    #[prost(enumeration="EngineType", tag="5")]
+    #[prost(enumeration = "EngineType", tag = "5")]
     pub engine_type: i32,
 }
 /// Message that contains the container ID and its bytes in response to "get".
@@ -377,13 +379,13 @@ pub struct Get {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Put {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub container: ::prost::bytes::Bytes,
-    #[prost(enumeration="EngineType", tag="4")]
+    #[prost(enumeration = "EngineType", tag = "4")]
     pub engine_type: i32,
 }
 /// Message that contains a preferred container ID and its container bytes
@@ -398,15 +400,15 @@ pub struct Put {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PushQuery {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(uint64, tag="3")]
+    #[prost(uint64, tag = "3")]
     pub deadline: u64,
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub container: ::prost::bytes::Bytes,
-    #[prost(enumeration="EngineType", tag="5")]
+    #[prost(enumeration = "EngineType", tag = "5")]
     pub engine_type: i32,
 }
 /// Message that contains a preferred container ID to query other peers
@@ -417,15 +419,15 @@ pub struct PushQuery {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PullQuery {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(uint64, tag="3")]
+    #[prost(uint64, tag = "3")]
     pub deadline: u64,
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub container_id: ::prost::bytes::Bytes,
-    #[prost(enumeration="EngineType", tag="5")]
+    #[prost(enumeration = "EngineType", tag = "5")]
     pub engine_type: i32,
 }
 /// Message that contains the votes/preferences of the node. It is sent in
@@ -438,45 +440,45 @@ pub struct PullQuery {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Chits {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
     /// Represents the current preferred block.
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub preferred_id: ::prost::bytes::Bytes,
     /// Represents the last accepted block.
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub accepted_id: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(uint64, tag="3")]
+    #[prost(uint64, tag = "3")]
     pub deadline: u64,
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub app_bytes: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub app_bytes: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppGossip {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub app_bytes: ::prost::bytes::Bytes,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]

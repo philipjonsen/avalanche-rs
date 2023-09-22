@@ -2,8 +2,8 @@
 /// Generated client implementations.
 pub mod database_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct DatabaseClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -47,9 +47,8 @@ pub mod database_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             DatabaseClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -88,139 +87,117 @@ pub mod database_client {
             &mut self,
             request: impl tonic::IntoRequest<super::HasRequest>,
         ) -> std::result::Result<tonic::Response<super::HasResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/rpcdb.Database/Has");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("rpcdb.Database", "Has"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("rpcdb.Database", "Has"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get(
             &mut self,
             request: impl tonic::IntoRequest<super::GetRequest>,
         ) -> std::result::Result<tonic::Response<super::GetResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/rpcdb.Database/Get");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("rpcdb.Database", "Get"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("rpcdb.Database", "Get"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn put(
             &mut self,
             request: impl tonic::IntoRequest<super::PutRequest>,
         ) -> std::result::Result<tonic::Response<super::PutResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/rpcdb.Database/Put");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("rpcdb.Database", "Put"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("rpcdb.Database", "Put"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn delete(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteRequest>,
         ) -> std::result::Result<tonic::Response<super::DeleteResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/rpcdb.Database/Delete");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("rpcdb.Database", "Delete"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("rpcdb.Database", "Delete"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn compact(
             &mut self,
             request: impl tonic::IntoRequest<super::CompactRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::CompactResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::CompactResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/rpcdb.Database/Compact");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("rpcdb.Database", "Compact"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("rpcdb.Database", "Compact"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn close(
             &mut self,
             request: impl tonic::IntoRequest<super::CloseRequest>,
         ) -> std::result::Result<tonic::Response<super::CloseResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/rpcdb.Database/Close");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("rpcdb.Database", "Close"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("rpcdb.Database", "Close"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn health_check(
             &mut self,
             request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::HealthCheckResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::HealthCheckResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/rpcdb.Database/HealthCheck",
-            );
+            let path = http::uri::PathAndQuery::from_static("/rpcdb.Database/HealthCheck");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("rpcdb.Database", "HealthCheck"));
@@ -229,25 +206,19 @@ pub mod database_client {
         pub async fn write_batch(
             &mut self,
             request: impl tonic::IntoRequest<super::WriteBatchRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::WriteBatchResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::WriteBatchResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/rpcdb.Database/WriteBatch",
-            );
+            let path = http::uri::PathAndQuery::from_static("/rpcdb.Database/WriteBatch");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("rpcdb.Database", "WriteBatch"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("rpcdb.Database", "WriteBatch"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn new_iterator_with_start_and_prefix(
@@ -257,46 +228,36 @@ pub mod database_client {
             tonic::Response<super::NewIteratorWithStartAndPrefixResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/rpcdb.Database/NewIteratorWithStartAndPrefix",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("rpcdb.Database", "NewIteratorWithStartAndPrefix"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "rpcdb.Database",
+                "NewIteratorWithStartAndPrefix",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn iterator_next(
             &mut self,
             request: impl tonic::IntoRequest<super::IteratorNextRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::IteratorNextResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::IteratorNextResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/rpcdb.Database/IteratorNext",
-            );
+            let path = http::uri::PathAndQuery::from_static("/rpcdb.Database/IteratorNext");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("rpcdb.Database", "IteratorNext"));
@@ -305,23 +266,16 @@ pub mod database_client {
         pub async fn iterator_error(
             &mut self,
             request: impl tonic::IntoRequest<super::IteratorErrorRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::IteratorErrorResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::IteratorErrorResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/rpcdb.Database/IteratorError",
-            );
+            let path = http::uri::PathAndQuery::from_static("/rpcdb.Database/IteratorError");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("rpcdb.Database", "IteratorError"));
@@ -330,23 +284,16 @@ pub mod database_client {
         pub async fn iterator_release(
             &mut self,
             request: impl tonic::IntoRequest<super::IteratorReleaseRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::IteratorReleaseResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::IteratorReleaseResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/rpcdb.Database/IteratorRelease",
-            );
+            let path = http::uri::PathAndQuery::from_static("/rpcdb.Database/IteratorRelease");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("rpcdb.Database", "IteratorRelease"));
@@ -388,17 +335,11 @@ pub mod database_server {
         async fn health_check(
             &self,
             request: tonic::Request<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::HealthCheckResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::HealthCheckResponse>, tonic::Status>;
         async fn write_batch(
             &self,
             request: tonic::Request<super::WriteBatchRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::WriteBatchResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::WriteBatchResponse>, tonic::Status>;
         async fn new_iterator_with_start_and_prefix(
             &self,
             request: tonic::Request<super::NewIteratorWithStartAndPrefixRequest>,
@@ -409,24 +350,15 @@ pub mod database_server {
         async fn iterator_next(
             &self,
             request: tonic::Request<super::IteratorNextRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::IteratorNextResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::IteratorNextResponse>, tonic::Status>;
         async fn iterator_error(
             &self,
             request: tonic::Request<super::IteratorErrorRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::IteratorErrorResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::IteratorErrorResponse>, tonic::Status>;
         async fn iterator_release(
             &self,
             request: tonic::Request<super::IteratorReleaseRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::IteratorReleaseResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::IteratorReleaseResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct DatabaseServer<T: Database> {
@@ -451,10 +383,7 @@ pub mod database_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -510,13 +439,9 @@ pub mod database_server {
                 "/rpcdb.Database/Has" => {
                     #[allow(non_camel_case_types)]
                     struct HasSvc<T: Database>(pub Arc<T>);
-                    impl<T: Database> tonic::server::UnaryService<super::HasRequest>
-                    for HasSvc<T> {
+                    impl<T: Database> tonic::server::UnaryService<super::HasRequest> for HasSvc<T> {
                         type Response = super::HasResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::HasRequest>,
@@ -552,13 +477,9 @@ pub mod database_server {
                 "/rpcdb.Database/Get" => {
                     #[allow(non_camel_case_types)]
                     struct GetSvc<T: Database>(pub Arc<T>);
-                    impl<T: Database> tonic::server::UnaryService<super::GetRequest>
-                    for GetSvc<T> {
+                    impl<T: Database> tonic::server::UnaryService<super::GetRequest> for GetSvc<T> {
                         type Response = super::GetResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetRequest>,
@@ -594,13 +515,9 @@ pub mod database_server {
                 "/rpcdb.Database/Put" => {
                     #[allow(non_camel_case_types)]
                     struct PutSvc<T: Database>(pub Arc<T>);
-                    impl<T: Database> tonic::server::UnaryService<super::PutRequest>
-                    for PutSvc<T> {
+                    impl<T: Database> tonic::server::UnaryService<super::PutRequest> for PutSvc<T> {
                         type Response = super::PutResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::PutRequest>,
@@ -636,13 +553,9 @@ pub mod database_server {
                 "/rpcdb.Database/Delete" => {
                     #[allow(non_camel_case_types)]
                     struct DeleteSvc<T: Database>(pub Arc<T>);
-                    impl<T: Database> tonic::server::UnaryService<super::DeleteRequest>
-                    for DeleteSvc<T> {
+                    impl<T: Database> tonic::server::UnaryService<super::DeleteRequest> for DeleteSvc<T> {
                         type Response = super::DeleteResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::DeleteRequest>,
@@ -678,13 +591,9 @@ pub mod database_server {
                 "/rpcdb.Database/Compact" => {
                     #[allow(non_camel_case_types)]
                     struct CompactSvc<T: Database>(pub Arc<T>);
-                    impl<T: Database> tonic::server::UnaryService<super::CompactRequest>
-                    for CompactSvc<T> {
+                    impl<T: Database> tonic::server::UnaryService<super::CompactRequest> for CompactSvc<T> {
                         type Response = super::CompactResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::CompactRequest>,
@@ -720,13 +629,9 @@ pub mod database_server {
                 "/rpcdb.Database/Close" => {
                     #[allow(non_camel_case_types)]
                     struct CloseSvc<T: Database>(pub Arc<T>);
-                    impl<T: Database> tonic::server::UnaryService<super::CloseRequest>
-                    for CloseSvc<T> {
+                    impl<T: Database> tonic::server::UnaryService<super::CloseRequest> for CloseSvc<T> {
                         type Response = super::CloseResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::CloseRequest>,
@@ -762,25 +667,18 @@ pub mod database_server {
                 "/rpcdb.Database/HealthCheck" => {
                     #[allow(non_camel_case_types)]
                     struct HealthCheckSvc<T: Database>(pub Arc<T>);
-                    impl<
-                        T: Database,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for HealthCheckSvc<T> {
+                    impl<T: Database>
+                        tonic::server::UnaryService<super::super::google::protobuf::Empty>
+                        for HealthCheckSvc<T>
+                    {
                         type Response = super::HealthCheckResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).health_check(request).await
-                            };
+                            let fut = async move { (*inner).health_check(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -810,15 +708,9 @@ pub mod database_server {
                 "/rpcdb.Database/WriteBatch" => {
                     #[allow(non_camel_case_types)]
                     struct WriteBatchSvc<T: Database>(pub Arc<T>);
-                    impl<
-                        T: Database,
-                    > tonic::server::UnaryService<super::WriteBatchRequest>
-                    for WriteBatchSvc<T> {
+                    impl<T: Database> tonic::server::UnaryService<super::WriteBatchRequest> for WriteBatchSvc<T> {
                         type Response = super::WriteBatchResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::WriteBatchRequest>,
@@ -854,21 +746,15 @@ pub mod database_server {
                 "/rpcdb.Database/NewIteratorWithStartAndPrefix" => {
                     #[allow(non_camel_case_types)]
                     struct NewIteratorWithStartAndPrefixSvc<T: Database>(pub Arc<T>);
-                    impl<
-                        T: Database,
-                    > tonic::server::UnaryService<
-                        super::NewIteratorWithStartAndPrefixRequest,
-                    > for NewIteratorWithStartAndPrefixSvc<T> {
+                    impl<T: Database>
+                        tonic::server::UnaryService<super::NewIteratorWithStartAndPrefixRequest>
+                        for NewIteratorWithStartAndPrefixSvc<T>
+                    {
                         type Response = super::NewIteratorWithStartAndPrefixResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::NewIteratorWithStartAndPrefixRequest,
-                            >,
+                            request: tonic::Request<super::NewIteratorWithStartAndPrefixRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -903,23 +789,15 @@ pub mod database_server {
                 "/rpcdb.Database/IteratorNext" => {
                     #[allow(non_camel_case_types)]
                     struct IteratorNextSvc<T: Database>(pub Arc<T>);
-                    impl<
-                        T: Database,
-                    > tonic::server::UnaryService<super::IteratorNextRequest>
-                    for IteratorNextSvc<T> {
+                    impl<T: Database> tonic::server::UnaryService<super::IteratorNextRequest> for IteratorNextSvc<T> {
                         type Response = super::IteratorNextResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::IteratorNextRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).iterator_next(request).await
-                            };
+                            let fut = async move { (*inner).iterator_next(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -949,23 +827,15 @@ pub mod database_server {
                 "/rpcdb.Database/IteratorError" => {
                     #[allow(non_camel_case_types)]
                     struct IteratorErrorSvc<T: Database>(pub Arc<T>);
-                    impl<
-                        T: Database,
-                    > tonic::server::UnaryService<super::IteratorErrorRequest>
-                    for IteratorErrorSvc<T> {
+                    impl<T: Database> tonic::server::UnaryService<super::IteratorErrorRequest> for IteratorErrorSvc<T> {
                         type Response = super::IteratorErrorResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::IteratorErrorRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).iterator_error(request).await
-                            };
+                            let fut = async move { (*inner).iterator_error(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -995,23 +865,17 @@ pub mod database_server {
                 "/rpcdb.Database/IteratorRelease" => {
                     #[allow(non_camel_case_types)]
                     struct IteratorReleaseSvc<T: Database>(pub Arc<T>);
-                    impl<
-                        T: Database,
-                    > tonic::server::UnaryService<super::IteratorReleaseRequest>
-                    for IteratorReleaseSvc<T> {
+                    impl<T: Database> tonic::server::UnaryService<super::IteratorReleaseRequest>
+                        for IteratorReleaseSvc<T>
+                    {
                         type Response = super::IteratorReleaseResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::IteratorReleaseRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).iterator_release(request).await
-                            };
+                            let fut = async move { (*inner).iterator_release(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1038,18 +902,14 @@ pub mod database_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

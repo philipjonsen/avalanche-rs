@@ -2,8 +2,8 @@
 /// Generated client implementations.
 pub mod keystore_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct KeystoreClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -47,9 +47,8 @@ pub mod keystore_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             KeystoreClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -87,23 +86,16 @@ pub mod keystore_client {
         pub async fn get_database(
             &mut self,
             request: impl tonic::IntoRequest<super::GetDatabaseRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetDatabaseResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetDatabaseResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/keystore.Keystore/GetDatabase",
-            );
+            let path = http::uri::PathAndQuery::from_static("/keystore.Keystore/GetDatabase");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("keystore.Keystore", "GetDatabase"));
@@ -121,10 +113,7 @@ pub mod keystore_server {
         async fn get_database(
             &self,
             request: tonic::Request<super::GetDatabaseRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetDatabaseResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetDatabaseResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct KeystoreServer<T: Keystore> {
@@ -149,10 +138,7 @@ pub mod keystore_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -208,23 +194,15 @@ pub mod keystore_server {
                 "/keystore.Keystore/GetDatabase" => {
                     #[allow(non_camel_case_types)]
                     struct GetDatabaseSvc<T: Keystore>(pub Arc<T>);
-                    impl<
-                        T: Keystore,
-                    > tonic::server::UnaryService<super::GetDatabaseRequest>
-                    for GetDatabaseSvc<T> {
+                    impl<T: Keystore> tonic::server::UnaryService<super::GetDatabaseRequest> for GetDatabaseSvc<T> {
                         type Response = super::GetDatabaseResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetDatabaseRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).get_database(request).await
-                            };
+                            let fut = async move { (*inner).get_database(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -251,18 +229,14 @@ pub mod keystore_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

@@ -3,11 +3,11 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InitializeRequest {
     /// ProtocolVersion is used to identify incompatibilities with AvalancheGo and a VM.
-    #[prost(uint32, tag="1")]
+    #[prost(uint32, tag = "1")]
     pub protocol_version: u32,
     /// Address of the gRPC server endpoint serving the handshake logic.
     /// Example: 127.0.0.1:50001
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub addr: ::prost::alloc::string::String,
 }
 /// Encoded file descriptor set for the `vm.runtime` package

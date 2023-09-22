@@ -2,8 +2,8 @@
 /// Generated client implementations.
 pub mod conn_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct ConnClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -34,10 +34,7 @@ pub mod conn_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> ConnClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> ConnClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -47,9 +44,8 @@ pub mod conn_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             ConnClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -88,62 +84,54 @@ pub mod conn_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ReadRequest>,
         ) -> std::result::Result<tonic::Response<super::ReadResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/net.conn.Conn/Read");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("net.conn.Conn", "Read"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("net.conn.Conn", "Read"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn write(
             &mut self,
             request: impl tonic::IntoRequest<super::WriteRequest>,
         ) -> std::result::Result<tonic::Response<super::WriteResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/net.conn.Conn/Write");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("net.conn.Conn", "Write"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("net.conn.Conn", "Write"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn close(
             &mut self,
-            request: impl tonic::IntoRequest<
-                super::super::super::google::protobuf::Empty,
-            >,
+            request: impl tonic::IntoRequest<super::super::super::google::protobuf::Empty>,
         ) -> std::result::Result<
             tonic::Response<super::super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/net.conn.Conn/Close");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("net.conn.Conn", "Close"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("net.conn.Conn", "Close"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn set_deadline(
@@ -153,21 +141,17 @@ pub mod conn_client {
             tonic::Response<super::super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/net.conn.Conn/SetDeadline",
-            );
+            let path = http::uri::PathAndQuery::from_static("/net.conn.Conn/SetDeadline");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("net.conn.Conn", "SetDeadline"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("net.conn.Conn", "SetDeadline"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn set_read_deadline(
@@ -177,19 +161,14 @@ pub mod conn_client {
             tonic::Response<super::super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/net.conn.Conn/SetReadDeadline",
-            );
+            let path = http::uri::PathAndQuery::from_static("/net.conn.Conn/SetReadDeadline");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("net.conn.Conn", "SetReadDeadline"));
@@ -202,19 +181,14 @@ pub mod conn_client {
             tonic::Response<super::super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/net.conn.Conn/SetWriteDeadline",
-            );
+            let path = http::uri::PathAndQuery::from_static("/net.conn.Conn/SetWriteDeadline");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("net.conn.Conn", "SetWriteDeadline"));
@@ -289,10 +263,7 @@ pub mod conn_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -348,13 +319,9 @@ pub mod conn_server {
                 "/net.conn.Conn/Read" => {
                     #[allow(non_camel_case_types)]
                     struct ReadSvc<T: Conn>(pub Arc<T>);
-                    impl<T: Conn> tonic::server::UnaryService<super::ReadRequest>
-                    for ReadSvc<T> {
+                    impl<T: Conn> tonic::server::UnaryService<super::ReadRequest> for ReadSvc<T> {
                         type Response = super::ReadResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::ReadRequest>,
@@ -390,13 +357,9 @@ pub mod conn_server {
                 "/net.conn.Conn/Write" => {
                     #[allow(non_camel_case_types)]
                     struct WriteSvc<T: Conn>(pub Arc<T>);
-                    impl<T: Conn> tonic::server::UnaryService<super::WriteRequest>
-                    for WriteSvc<T> {
+                    impl<T: Conn> tonic::server::UnaryService<super::WriteRequest> for WriteSvc<T> {
                         type Response = super::WriteResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::WriteRequest>,
@@ -432,21 +395,15 @@ pub mod conn_server {
                 "/net.conn.Conn/Close" => {
                     #[allow(non_camel_case_types)]
                     struct CloseSvc<T: Conn>(pub Arc<T>);
-                    impl<
-                        T: Conn,
-                    > tonic::server::UnaryService<
-                        super::super::super::google::protobuf::Empty,
-                    > for CloseSvc<T> {
+                    impl<T: Conn>
+                        tonic::server::UnaryService<super::super::super::google::protobuf::Empty>
+                        for CloseSvc<T>
+                    {
                         type Response = super::super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move { (*inner).close(request).await };
@@ -479,21 +436,15 @@ pub mod conn_server {
                 "/net.conn.Conn/SetDeadline" => {
                     #[allow(non_camel_case_types)]
                     struct SetDeadlineSvc<T: Conn>(pub Arc<T>);
-                    impl<T: Conn> tonic::server::UnaryService<super::SetDeadlineRequest>
-                    for SetDeadlineSvc<T> {
+                    impl<T: Conn> tonic::server::UnaryService<super::SetDeadlineRequest> for SetDeadlineSvc<T> {
                         type Response = super::super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SetDeadlineRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).set_deadline(request).await
-                            };
+                            let fut = async move { (*inner).set_deadline(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -523,21 +474,15 @@ pub mod conn_server {
                 "/net.conn.Conn/SetReadDeadline" => {
                     #[allow(non_camel_case_types)]
                     struct SetReadDeadlineSvc<T: Conn>(pub Arc<T>);
-                    impl<T: Conn> tonic::server::UnaryService<super::SetDeadlineRequest>
-                    for SetReadDeadlineSvc<T> {
+                    impl<T: Conn> tonic::server::UnaryService<super::SetDeadlineRequest> for SetReadDeadlineSvc<T> {
                         type Response = super::super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SetDeadlineRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).set_read_deadline(request).await
-                            };
+                            let fut = async move { (*inner).set_read_deadline(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -567,21 +512,15 @@ pub mod conn_server {
                 "/net.conn.Conn/SetWriteDeadline" => {
                     #[allow(non_camel_case_types)]
                     struct SetWriteDeadlineSvc<T: Conn>(pub Arc<T>);
-                    impl<T: Conn> tonic::server::UnaryService<super::SetDeadlineRequest>
-                    for SetWriteDeadlineSvc<T> {
+                    impl<T: Conn> tonic::server::UnaryService<super::SetDeadlineRequest> for SetWriteDeadlineSvc<T> {
                         type Response = super::super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SetDeadlineRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).set_write_deadline(request).await
-                            };
+                            let fut = async move { (*inner).set_write_deadline(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -608,18 +547,14 @@ pub mod conn_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

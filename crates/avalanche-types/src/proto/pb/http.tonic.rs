@@ -2,8 +2,8 @@
 /// Generated client implementations.
 pub mod http_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct HttpClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -34,10 +34,7 @@ pub mod http_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> HttpClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> HttpClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -47,9 +44,8 @@ pub mod http_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             HttpClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -91,41 +87,35 @@ pub mod http_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/http.HTTP/Handle");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("http.HTTP", "Handle"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("http.HTTP", "Handle"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn handle_simple(
             &mut self,
             request: impl tonic::IntoRequest<super::HandleSimpleHttpRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::HandleSimpleHttpResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::HandleSimpleHttpResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/http.HTTP/HandleSimple");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("http.HTTP", "HandleSimple"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("http.HTTP", "HandleSimple"));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -147,10 +137,7 @@ pub mod http_server {
         async fn handle_simple(
             &self,
             request: tonic::Request<super::HandleSimpleHttpRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::HandleSimpleHttpResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::HandleSimpleHttpResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct HttpServer<T: Http> {
@@ -175,10 +162,7 @@ pub mod http_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -234,13 +218,9 @@ pub mod http_server {
                 "/http.HTTP/Handle" => {
                     #[allow(non_camel_case_types)]
                     struct HandleSvc<T: Http>(pub Arc<T>);
-                    impl<T: Http> tonic::server::UnaryService<super::HttpRequest>
-                    for HandleSvc<T> {
+                    impl<T: Http> tonic::server::UnaryService<super::HttpRequest> for HandleSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::HttpRequest>,
@@ -276,23 +256,15 @@ pub mod http_server {
                 "/http.HTTP/HandleSimple" => {
                     #[allow(non_camel_case_types)]
                     struct HandleSimpleSvc<T: Http>(pub Arc<T>);
-                    impl<
-                        T: Http,
-                    > tonic::server::UnaryService<super::HandleSimpleHttpRequest>
-                    for HandleSimpleSvc<T> {
+                    impl<T: Http> tonic::server::UnaryService<super::HandleSimpleHttpRequest> for HandleSimpleSvc<T> {
                         type Response = super::HandleSimpleHttpResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::HandleSimpleHttpRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).handle_simple(request).await
-                            };
+                            let fut = async move { (*inner).handle_simple(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -319,18 +291,14 @@ pub mod http_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

@@ -3,57 +3,57 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Header {
     /// key is a element key in a key value pair
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub key: ::prost::alloc::string::String,
     /// values are a list of strings coresponding to the key
-    #[prost(string, repeated, tag="2")]
+    #[prost(string, repeated, tag = "2")]
     pub values: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WriteRequest {
     /// headers represents the key-value pairs in an HTTP header
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub headers: ::prost::alloc::vec::Vec<Header>,
     /// payload is the write request in bytes
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub payload: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WriteResponse {
     /// written is the number of bytes written in body
-    #[prost(int32, tag="1")]
+    #[prost(int32, tag = "1")]
     pub written: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WriteHeaderRequest {
     /// headers represents the key-value pairs in an HTTP header
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub headers: ::prost::alloc::vec::Vec<Header>,
     /// status_code must be a valid HTTP 1xx-5xx status code
-    #[prost(int32, tag="2")]
+    #[prost(int32, tag = "2")]
     pub status_code: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HijackResponse {
     /// local_network is the name of the network (for example, "tcp", "udp")
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub local_network: ::prost::alloc::string::String,
     /// local_string is string form of address
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub local_string: ::prost::alloc::string::String,
     /// remote_network is the name of the network (for example, "tcp", "udp")
-    #[prost(string, tag="3")]
+    #[prost(string, tag = "3")]
     pub remote_network: ::prost::alloc::string::String,
     /// remote_string is string form of address
-    #[prost(string, tag="4")]
+    #[prost(string, tag = "4")]
     pub remote_string: ::prost::alloc::string::String,
     /// server_addr is the address of the gRPC server serving the Conn, Reader
     /// and Writer services which facilitate Hijacking
-    #[prost(string, tag="5")]
+    #[prost(string, tag = "5")]
     pub server_addr: ::prost::alloc::string::String,
 }
 /// Encoded file descriptor set for the `http.responsewriter` package
