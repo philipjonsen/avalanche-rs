@@ -2,8 +2,8 @@
 /// Generated client implementations.
 pub mod vm_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct VmClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -34,10 +34,7 @@ pub mod vm_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> VmClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> VmClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -47,9 +44,8 @@ pub mod vm_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             VmClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -87,45 +83,36 @@ pub mod vm_client {
         pub async fn initialize(
             &mut self,
             request: impl tonic::IntoRequest<super::InitializeRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::InitializeResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::InitializeResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/Initialize");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "Initialize"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "Initialize"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn set_state(
             &mut self,
             request: impl tonic::IntoRequest<super::SetStateRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::SetStateResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::SetStateResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/SetState");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "SetState"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "SetState"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn shutdown(
@@ -135,63 +122,50 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/Shutdown");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "Shutdown"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "Shutdown"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn create_handlers(
             &mut self,
             request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::CreateHandlersResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::CreateHandlersResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/CreateHandlers");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "CreateHandlers"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "CreateHandlers"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn create_static_handlers(
             &mut self,
             request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::CreateStaticHandlersResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::CreateStaticHandlersResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/vm.VM/CreateStaticHandlers",
-            );
+            let path = http::uri::PathAndQuery::from_static("/vm.VM/CreateStaticHandlers");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("vm.VM", "CreateStaticHandlers"));
@@ -204,19 +178,17 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/Connected");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "Connected"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "Connected"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn disconnected(
@@ -226,85 +198,70 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/Disconnected");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "Disconnected"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "Disconnected"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn build_block(
             &mut self,
             request: impl tonic::IntoRequest<super::BuildBlockRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::BuildBlockResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::BuildBlockResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/BuildBlock");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "BuildBlock"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "BuildBlock"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn parse_block(
             &mut self,
             request: impl tonic::IntoRequest<super::ParseBlockRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::ParseBlockResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::ParseBlockResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/ParseBlock");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "ParseBlock"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "ParseBlock"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_block(
             &mut self,
             request: impl tonic::IntoRequest<super::GetBlockRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetBlockResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetBlockResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/GetBlock");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "GetBlock"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "GetBlock"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn set_preference(
@@ -314,60 +271,51 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/SetPreference");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "SetPreference"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "SetPreference"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn health(
             &mut self,
             request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
         ) -> std::result::Result<tonic::Response<super::HealthResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/Health");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "Health"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "Health"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn version(
             &mut self,
             request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::VersionResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::VersionResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/Version");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "Version"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "Version"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn app_request(
@@ -377,19 +325,17 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/AppRequest");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "AppRequest"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "AppRequest"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn app_request_failed(
@@ -399,19 +345,17 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/AppRequestFailed");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "AppRequestFailed"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "AppRequestFailed"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn app_response(
@@ -421,19 +365,17 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/AppResponse");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "AppResponse"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "AppResponse"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn app_gossip(
@@ -443,38 +385,34 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/AppGossip");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "AppGossip"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "AppGossip"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn gather(
             &mut self,
             request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
         ) -> std::result::Result<tonic::Response<super::GatherResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/Gather");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "Gather"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "Gather"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn cross_chain_app_request(
@@ -484,19 +422,14 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/vm.VM/CrossChainAppRequest",
-            );
+            let path = http::uri::PathAndQuery::from_static("/vm.VM/CrossChainAppRequest");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("vm.VM", "CrossChainAppRequest"));
@@ -509,19 +442,14 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/vm.VM/CrossChainAppRequestFailed",
-            );
+            let path = http::uri::PathAndQuery::from_static("/vm.VM/CrossChainAppRequestFailed");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("vm.VM", "CrossChainAppRequestFailed"));
@@ -534,19 +462,14 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/vm.VM/CrossChainAppResponse",
-            );
+            let path = http::uri::PathAndQuery::from_static("/vm.VM/CrossChainAppResponse");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("vm.VM", "CrossChainAppResponse"));
@@ -555,111 +478,91 @@ pub mod vm_client {
         pub async fn get_ancestors(
             &mut self,
             request: impl tonic::IntoRequest<super::GetAncestorsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetAncestorsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetAncestorsResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/GetAncestors");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "GetAncestors"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "GetAncestors"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn batched_parse_block(
             &mut self,
             request: impl tonic::IntoRequest<super::BatchedParseBlockRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::BatchedParseBlockResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::BatchedParseBlockResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/BatchedParseBlock");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "BatchedParseBlock"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "BatchedParseBlock"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn verify_height_index(
             &mut self,
             request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::VerifyHeightIndexResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::VerifyHeightIndexResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/VerifyHeightIndex");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "VerifyHeightIndex"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "VerifyHeightIndex"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_block_id_at_height(
             &mut self,
             request: impl tonic::IntoRequest<super::GetBlockIdAtHeightRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetBlockIdAtHeightResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetBlockIdAtHeightResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/GetBlockIDAtHeight");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "GetBlockIDAtHeight"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "GetBlockIDAtHeight"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn state_sync_enabled(
             &mut self,
             request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::StateSyncEnabledResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::StateSyncEnabledResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/StateSyncEnabled");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "StateSyncEnabled"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "StateSyncEnabled"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_ongoing_sync_state_summary(
@@ -669,19 +572,14 @@ pub mod vm_client {
             tonic::Response<super::GetOngoingSyncStateSummaryResponse>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/vm.VM/GetOngoingSyncStateSummary",
-            );
+            let path = http::uri::PathAndQuery::from_static("/vm.VM/GetOngoingSyncStateSummary");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("vm.VM", "GetOngoingSyncStateSummary"));
@@ -690,91 +588,73 @@ pub mod vm_client {
         pub async fn get_last_state_summary(
             &mut self,
             request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetLastStateSummaryResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetLastStateSummaryResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/vm.VM/GetLastStateSummary",
-            );
+            let path = http::uri::PathAndQuery::from_static("/vm.VM/GetLastStateSummary");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "GetLastStateSummary"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "GetLastStateSummary"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn parse_state_summary(
             &mut self,
             request: impl tonic::IntoRequest<super::ParseStateSummaryRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::ParseStateSummaryResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::ParseStateSummaryResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/ParseStateSummary");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "ParseStateSummary"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "ParseStateSummary"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_state_summary(
             &mut self,
             request: impl tonic::IntoRequest<super::GetStateSummaryRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetStateSummaryResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetStateSummaryResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/GetStateSummary");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "GetStateSummary"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "GetStateSummary"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn block_verify(
             &mut self,
             request: impl tonic::IntoRequest<super::BlockVerifyRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::BlockVerifyResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::BlockVerifyResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/BlockVerify");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "BlockVerify"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "BlockVerify"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn block_accept(
@@ -784,19 +664,17 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/BlockAccept");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "BlockAccept"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "BlockAccept"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn block_reject(
@@ -806,41 +684,35 @@ pub mod vm_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/BlockReject");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "BlockReject"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "BlockReject"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn state_summary_accept(
             &mut self,
             request: impl tonic::IntoRequest<super::StateSummaryAcceptRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::StateSummaryAcceptResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::StateSummaryAcceptResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/vm.VM/StateSummaryAccept");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("vm.VM", "StateSummaryAccept"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("vm.VM", "StateSummaryAccept"));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -855,17 +727,11 @@ pub mod vm_server {
         async fn initialize(
             &self,
             request: tonic::Request<super::InitializeRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::InitializeResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::InitializeResponse>, tonic::Status>;
         async fn set_state(
             &self,
             request: tonic::Request<super::SetStateRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::SetStateResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::SetStateResponse>, tonic::Status>;
         async fn shutdown(
             &self,
             request: tonic::Request<super::super::google::protobuf::Empty>,
@@ -876,17 +742,11 @@ pub mod vm_server {
         async fn create_handlers(
             &self,
             request: tonic::Request<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::CreateHandlersResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::CreateHandlersResponse>, tonic::Status>;
         async fn create_static_handlers(
             &self,
             request: tonic::Request<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::CreateStaticHandlersResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::CreateStaticHandlersResponse>, tonic::Status>;
         async fn connected(
             &self,
             request: tonic::Request<super::ConnectedRequest>,
@@ -904,24 +764,15 @@ pub mod vm_server {
         async fn build_block(
             &self,
             request: tonic::Request<super::BuildBlockRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::BuildBlockResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::BuildBlockResponse>, tonic::Status>;
         async fn parse_block(
             &self,
             request: tonic::Request<super::ParseBlockRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::ParseBlockResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::ParseBlockResponse>, tonic::Status>;
         async fn get_block(
             &self,
             request: tonic::Request<super::GetBlockRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetBlockResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetBlockResponse>, tonic::Status>;
         async fn set_preference(
             &self,
             request: tonic::Request<super::SetPreferenceRequest>,
@@ -993,38 +844,23 @@ pub mod vm_server {
         async fn get_ancestors(
             &self,
             request: tonic::Request<super::GetAncestorsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetAncestorsResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetAncestorsResponse>, tonic::Status>;
         async fn batched_parse_block(
             &self,
             request: tonic::Request<super::BatchedParseBlockRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::BatchedParseBlockResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::BatchedParseBlockResponse>, tonic::Status>;
         async fn verify_height_index(
             &self,
             request: tonic::Request<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::VerifyHeightIndexResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::VerifyHeightIndexResponse>, tonic::Status>;
         async fn get_block_id_at_height(
             &self,
             request: tonic::Request<super::GetBlockIdAtHeightRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetBlockIdAtHeightResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetBlockIdAtHeightResponse>, tonic::Status>;
         async fn state_sync_enabled(
             &self,
             request: tonic::Request<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::StateSyncEnabledResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::StateSyncEnabledResponse>, tonic::Status>;
         async fn get_ongoing_sync_state_summary(
             &self,
             request: tonic::Request<super::super::google::protobuf::Empty>,
@@ -1035,31 +871,19 @@ pub mod vm_server {
         async fn get_last_state_summary(
             &self,
             request: tonic::Request<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetLastStateSummaryResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetLastStateSummaryResponse>, tonic::Status>;
         async fn parse_state_summary(
             &self,
             request: tonic::Request<super::ParseStateSummaryRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::ParseStateSummaryResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::ParseStateSummaryResponse>, tonic::Status>;
         async fn get_state_summary(
             &self,
             request: tonic::Request<super::GetStateSummaryRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetStateSummaryResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetStateSummaryResponse>, tonic::Status>;
         async fn block_verify(
             &self,
             request: tonic::Request<super::BlockVerifyRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::BlockVerifyResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::BlockVerifyResponse>, tonic::Status>;
         async fn block_accept(
             &self,
             request: tonic::Request<super::BlockAcceptRequest>,
@@ -1077,10 +901,7 @@ pub mod vm_server {
         async fn state_summary_accept(
             &self,
             request: tonic::Request<super::StateSummaryAcceptRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::StateSummaryAcceptResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::StateSummaryAcceptResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct VmServer<T: Vm> {
@@ -1105,10 +926,7 @@ pub mod vm_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -1164,13 +982,9 @@ pub mod vm_server {
                 "/vm.VM/Initialize" => {
                     #[allow(non_camel_case_types)]
                     struct InitializeSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::InitializeRequest>
-                    for InitializeSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::InitializeRequest> for InitializeSvc<T> {
                         type Response = super::InitializeResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::InitializeRequest>,
@@ -1206,13 +1020,9 @@ pub mod vm_server {
                 "/vm.VM/SetState" => {
                     #[allow(non_camel_case_types)]
                     struct SetStateSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::SetStateRequest>
-                    for SetStateSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::SetStateRequest> for SetStateSvc<T> {
                         type Response = super::SetStateResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SetStateRequest>,
@@ -1248,20 +1058,12 @@ pub mod vm_server {
                 "/vm.VM/Shutdown" => {
                     #[allow(non_camel_case_types)]
                     struct ShutdownSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for ShutdownSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::super::google::protobuf::Empty> for ShutdownSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move { (*inner).shutdown(request).await };
@@ -1294,25 +1096,17 @@ pub mod vm_server {
                 "/vm.VM/CreateHandlers" => {
                     #[allow(non_camel_case_types)]
                     struct CreateHandlersSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for CreateHandlersSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::super::google::protobuf::Empty>
+                        for CreateHandlersSvc<T>
+                    {
                         type Response = super::CreateHandlersResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).create_handlers(request).await
-                            };
+                            let fut = async move { (*inner).create_handlers(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1342,25 +1136,17 @@ pub mod vm_server {
                 "/vm.VM/CreateStaticHandlers" => {
                     #[allow(non_camel_case_types)]
                     struct CreateStaticHandlersSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for CreateStaticHandlersSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::super::google::protobuf::Empty>
+                        for CreateStaticHandlersSvc<T>
+                    {
                         type Response = super::CreateStaticHandlersResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).create_static_handlers(request).await
-                            };
+                            let fut = async move { (*inner).create_static_handlers(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1390,13 +1176,9 @@ pub mod vm_server {
                 "/vm.VM/Connected" => {
                     #[allow(non_camel_case_types)]
                     struct ConnectedSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::ConnectedRequest>
-                    for ConnectedSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::ConnectedRequest> for ConnectedSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::ConnectedRequest>,
@@ -1432,21 +1214,15 @@ pub mod vm_server {
                 "/vm.VM/Disconnected" => {
                     #[allow(non_camel_case_types)]
                     struct DisconnectedSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::DisconnectedRequest>
-                    for DisconnectedSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::DisconnectedRequest> for DisconnectedSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::DisconnectedRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).disconnected(request).await
-                            };
+                            let fut = async move { (*inner).disconnected(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1476,13 +1252,9 @@ pub mod vm_server {
                 "/vm.VM/BuildBlock" => {
                     #[allow(non_camel_case_types)]
                     struct BuildBlockSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::BuildBlockRequest>
-                    for BuildBlockSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::BuildBlockRequest> for BuildBlockSvc<T> {
                         type Response = super::BuildBlockResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::BuildBlockRequest>,
@@ -1518,13 +1290,9 @@ pub mod vm_server {
                 "/vm.VM/ParseBlock" => {
                     #[allow(non_camel_case_types)]
                     struct ParseBlockSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::ParseBlockRequest>
-                    for ParseBlockSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::ParseBlockRequest> for ParseBlockSvc<T> {
                         type Response = super::ParseBlockResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::ParseBlockRequest>,
@@ -1560,13 +1328,9 @@ pub mod vm_server {
                 "/vm.VM/GetBlock" => {
                     #[allow(non_camel_case_types)]
                     struct GetBlockSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::GetBlockRequest>
-                    for GetBlockSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::GetBlockRequest> for GetBlockSvc<T> {
                         type Response = super::GetBlockResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetBlockRequest>,
@@ -1602,21 +1366,15 @@ pub mod vm_server {
                 "/vm.VM/SetPreference" => {
                     #[allow(non_camel_case_types)]
                     struct SetPreferenceSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::SetPreferenceRequest>
-                    for SetPreferenceSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::SetPreferenceRequest> for SetPreferenceSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SetPreferenceRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).set_preference(request).await
-                            };
+                            let fut = async move { (*inner).set_preference(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1646,20 +1404,12 @@ pub mod vm_server {
                 "/vm.VM/Health" => {
                     #[allow(non_camel_case_types)]
                     struct HealthSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for HealthSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::super::google::protobuf::Empty> for HealthSvc<T> {
                         type Response = super::HealthResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move { (*inner).health(request).await };
@@ -1692,20 +1442,12 @@ pub mod vm_server {
                 "/vm.VM/Version" => {
                     #[allow(non_camel_case_types)]
                     struct VersionSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for VersionSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::super::google::protobuf::Empty> for VersionSvc<T> {
                         type Response = super::VersionResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move { (*inner).version(request).await };
@@ -1738,13 +1480,9 @@ pub mod vm_server {
                 "/vm.VM/AppRequest" => {
                     #[allow(non_camel_case_types)]
                     struct AppRequestSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::AppRequestMsg>
-                    for AppRequestSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::AppRequestMsg> for AppRequestSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::AppRequestMsg>,
@@ -1780,21 +1518,15 @@ pub mod vm_server {
                 "/vm.VM/AppRequestFailed" => {
                     #[allow(non_camel_case_types)]
                     struct AppRequestFailedSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::AppRequestFailedMsg>
-                    for AppRequestFailedSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::AppRequestFailedMsg> for AppRequestFailedSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::AppRequestFailedMsg>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).app_request_failed(request).await
-                            };
+                            let fut = async move { (*inner).app_request_failed(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1824,21 +1556,15 @@ pub mod vm_server {
                 "/vm.VM/AppResponse" => {
                     #[allow(non_camel_case_types)]
                     struct AppResponseSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::AppResponseMsg>
-                    for AppResponseSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::AppResponseMsg> for AppResponseSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::AppResponseMsg>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).app_response(request).await
-                            };
+                            let fut = async move { (*inner).app_response(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -1868,13 +1594,9 @@ pub mod vm_server {
                 "/vm.VM/AppGossip" => {
                     #[allow(non_camel_case_types)]
                     struct AppGossipSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::AppGossipMsg>
-                    for AppGossipSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::AppGossipMsg> for AppGossipSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::AppGossipMsg>,
@@ -1910,20 +1632,12 @@ pub mod vm_server {
                 "/vm.VM/Gather" => {
                     #[allow(non_camel_case_types)]
                     struct GatherSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for GatherSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::super::google::protobuf::Empty> for GatherSvc<T> {
                         type Response = super::GatherResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move { (*inner).gather(request).await };
@@ -1956,23 +1670,18 @@ pub mod vm_server {
                 "/vm.VM/CrossChainAppRequest" => {
                     #[allow(non_camel_case_types)]
                     struct CrossChainAppRequestSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::CrossChainAppRequestMsg>
-                    for CrossChainAppRequestSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::CrossChainAppRequestMsg>
+                        for CrossChainAppRequestSvc<T>
+                    {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::CrossChainAppRequestMsg>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).cross_chain_app_request(request).await
-                            };
+                            let fut =
+                                async move { (*inner).cross_chain_app_request(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2002,15 +1711,11 @@ pub mod vm_server {
                 "/vm.VM/CrossChainAppRequestFailed" => {
                     #[allow(non_camel_case_types)]
                     struct CrossChainAppRequestFailedSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::CrossChainAppRequestFailedMsg>
-                    for CrossChainAppRequestFailedSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::CrossChainAppRequestFailedMsg>
+                        for CrossChainAppRequestFailedSvc<T>
+                    {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::CrossChainAppRequestFailedMsg>,
@@ -2048,23 +1753,18 @@ pub mod vm_server {
                 "/vm.VM/CrossChainAppResponse" => {
                     #[allow(non_camel_case_types)]
                     struct CrossChainAppResponseSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::CrossChainAppResponseMsg>
-                    for CrossChainAppResponseSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::CrossChainAppResponseMsg>
+                        for CrossChainAppResponseSvc<T>
+                    {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::CrossChainAppResponseMsg>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).cross_chain_app_response(request).await
-                            };
+                            let fut =
+                                async move { (*inner).cross_chain_app_response(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2094,21 +1794,15 @@ pub mod vm_server {
                 "/vm.VM/GetAncestors" => {
                     #[allow(non_camel_case_types)]
                     struct GetAncestorsSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::GetAncestorsRequest>
-                    for GetAncestorsSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::GetAncestorsRequest> for GetAncestorsSvc<T> {
                         type Response = super::GetAncestorsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetAncestorsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).get_ancestors(request).await
-                            };
+                            let fut = async move { (*inner).get_ancestors(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2138,23 +1832,17 @@ pub mod vm_server {
                 "/vm.VM/BatchedParseBlock" => {
                     #[allow(non_camel_case_types)]
                     struct BatchedParseBlockSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::BatchedParseBlockRequest>
-                    for BatchedParseBlockSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::BatchedParseBlockRequest>
+                        for BatchedParseBlockSvc<T>
+                    {
                         type Response = super::BatchedParseBlockResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::BatchedParseBlockRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).batched_parse_block(request).await
-                            };
+                            let fut = async move { (*inner).batched_parse_block(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2184,25 +1872,17 @@ pub mod vm_server {
                 "/vm.VM/VerifyHeightIndex" => {
                     #[allow(non_camel_case_types)]
                     struct VerifyHeightIndexSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for VerifyHeightIndexSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::super::google::protobuf::Empty>
+                        for VerifyHeightIndexSvc<T>
+                    {
                         type Response = super::VerifyHeightIndexResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).verify_height_index(request).await
-                            };
+                            let fut = async move { (*inner).verify_height_index(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2232,23 +1912,17 @@ pub mod vm_server {
                 "/vm.VM/GetBlockIDAtHeight" => {
                     #[allow(non_camel_case_types)]
                     struct GetBlockIDAtHeightSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::GetBlockIdAtHeightRequest>
-                    for GetBlockIDAtHeightSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::GetBlockIdAtHeightRequest>
+                        for GetBlockIDAtHeightSvc<T>
+                    {
                         type Response = super::GetBlockIdAtHeightResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetBlockIdAtHeightRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).get_block_id_at_height(request).await
-                            };
+                            let fut = async move { (*inner).get_block_id_at_height(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2278,25 +1952,17 @@ pub mod vm_server {
                 "/vm.VM/StateSyncEnabled" => {
                     #[allow(non_camel_case_types)]
                     struct StateSyncEnabledSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for StateSyncEnabledSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::super::google::protobuf::Empty>
+                        for StateSyncEnabledSvc<T>
+                    {
                         type Response = super::StateSyncEnabledResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).state_sync_enabled(request).await
-                            };
+                            let fut = async move { (*inner).state_sync_enabled(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2326,20 +1992,14 @@ pub mod vm_server {
                 "/vm.VM/GetOngoingSyncStateSummary" => {
                     #[allow(non_camel_case_types)]
                     struct GetOngoingSyncStateSummarySvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for GetOngoingSyncStateSummarySvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::super::google::protobuf::Empty>
+                        for GetOngoingSyncStateSummarySvc<T>
+                    {
                         type Response = super::GetOngoingSyncStateSummaryResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -2374,25 +2034,17 @@ pub mod vm_server {
                 "/vm.VM/GetLastStateSummary" => {
                     #[allow(non_camel_case_types)]
                     struct GetLastStateSummarySvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for GetLastStateSummarySvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::super::google::protobuf::Empty>
+                        for GetLastStateSummarySvc<T>
+                    {
                         type Response = super::GetLastStateSummaryResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).get_last_state_summary(request).await
-                            };
+                            let fut = async move { (*inner).get_last_state_summary(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2422,23 +2074,17 @@ pub mod vm_server {
                 "/vm.VM/ParseStateSummary" => {
                     #[allow(non_camel_case_types)]
                     struct ParseStateSummarySvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::ParseStateSummaryRequest>
-                    for ParseStateSummarySvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::ParseStateSummaryRequest>
+                        for ParseStateSummarySvc<T>
+                    {
                         type Response = super::ParseStateSummaryResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::ParseStateSummaryRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).parse_state_summary(request).await
-                            };
+                            let fut = async move { (*inner).parse_state_summary(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2468,23 +2114,15 @@ pub mod vm_server {
                 "/vm.VM/GetStateSummary" => {
                     #[allow(non_camel_case_types)]
                     struct GetStateSummarySvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::GetStateSummaryRequest>
-                    for GetStateSummarySvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::GetStateSummaryRequest> for GetStateSummarySvc<T> {
                         type Response = super::GetStateSummaryResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetStateSummaryRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).get_state_summary(request).await
-                            };
+                            let fut = async move { (*inner).get_state_summary(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2514,21 +2152,15 @@ pub mod vm_server {
                 "/vm.VM/BlockVerify" => {
                     #[allow(non_camel_case_types)]
                     struct BlockVerifySvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::BlockVerifyRequest>
-                    for BlockVerifySvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::BlockVerifyRequest> for BlockVerifySvc<T> {
                         type Response = super::BlockVerifyResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::BlockVerifyRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).block_verify(request).await
-                            };
+                            let fut = async move { (*inner).block_verify(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2558,21 +2190,15 @@ pub mod vm_server {
                 "/vm.VM/BlockAccept" => {
                     #[allow(non_camel_case_types)]
                     struct BlockAcceptSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::BlockAcceptRequest>
-                    for BlockAcceptSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::BlockAcceptRequest> for BlockAcceptSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::BlockAcceptRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).block_accept(request).await
-                            };
+                            let fut = async move { (*inner).block_accept(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2602,21 +2228,15 @@ pub mod vm_server {
                 "/vm.VM/BlockReject" => {
                     #[allow(non_camel_case_types)]
                     struct BlockRejectSvc<T: Vm>(pub Arc<T>);
-                    impl<T: Vm> tonic::server::UnaryService<super::BlockRejectRequest>
-                    for BlockRejectSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::BlockRejectRequest> for BlockRejectSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::BlockRejectRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).block_reject(request).await
-                            };
+                            let fut = async move { (*inner).block_reject(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2646,23 +2266,17 @@ pub mod vm_server {
                 "/vm.VM/StateSummaryAccept" => {
                     #[allow(non_camel_case_types)]
                     struct StateSummaryAcceptSvc<T: Vm>(pub Arc<T>);
-                    impl<
-                        T: Vm,
-                    > tonic::server::UnaryService<super::StateSummaryAcceptRequest>
-                    for StateSummaryAcceptSvc<T> {
+                    impl<T: Vm> tonic::server::UnaryService<super::StateSummaryAcceptRequest>
+                        for StateSummaryAcceptSvc<T>
+                    {
                         type Response = super::StateSummaryAcceptResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::StateSummaryAcceptRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).state_summary_accept(request).await
-                            };
+                            let fut = async move { (*inner).state_summary_accept(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -2689,18 +2303,14 @@ pub mod vm_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

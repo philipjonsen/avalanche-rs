@@ -2,8 +2,8 @@
 /// Generated client implementations.
 pub mod db_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct DbClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -34,10 +34,7 @@ pub mod db_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> DbClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> DbClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -47,9 +44,8 @@ pub mod db_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             DbClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -87,91 +83,72 @@ pub mod db_client {
         pub async fn get_merkle_root(
             &mut self,
             request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetMerkleRootResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetMerkleRootResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/sync.DB/GetMerkleRoot");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("sync.DB", "GetMerkleRoot"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("sync.DB", "GetMerkleRoot"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_proof(
             &mut self,
             request: impl tonic::IntoRequest<super::GetProofRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetProofResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetProofResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/sync.DB/GetProof");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("sync.DB", "GetProof"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("sync.DB", "GetProof"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_change_proof(
             &mut self,
             request: impl tonic::IntoRequest<super::GetChangeProofRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetChangeProofResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetChangeProofResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/sync.DB/GetChangeProof");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("sync.DB", "GetChangeProof"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("sync.DB", "GetChangeProof"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn verify_change_proof(
             &mut self,
             request: impl tonic::IntoRequest<super::VerifyChangeProofRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::VerifyChangeProofResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::VerifyChangeProofResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/sync.DB/VerifyChangeProof",
-            );
+            let path = http::uri::PathAndQuery::from_static("/sync.DB/VerifyChangeProof");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("sync.DB", "VerifyChangeProof"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("sync.DB", "VerifyChangeProof"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn commit_change_proof(
@@ -181,43 +158,35 @@ pub mod db_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/sync.DB/CommitChangeProof",
-            );
+            let path = http::uri::PathAndQuery::from_static("/sync.DB/CommitChangeProof");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("sync.DB", "CommitChangeProof"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("sync.DB", "CommitChangeProof"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_range_proof(
             &mut self,
             request: impl tonic::IntoRequest<super::GetRangeProofRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetRangeProofResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetRangeProofResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/sync.DB/GetRangeProof");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("sync.DB", "GetRangeProof"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("sync.DB", "GetRangeProof"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn commit_range_proof(
@@ -227,19 +196,17 @@ pub mod db_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/sync.DB/CommitRangeProof");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("sync.DB", "CommitRangeProof"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("sync.DB", "CommitRangeProof"));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -254,31 +221,19 @@ pub mod db_server {
         async fn get_merkle_root(
             &self,
             request: tonic::Request<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetMerkleRootResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetMerkleRootResponse>, tonic::Status>;
         async fn get_proof(
             &self,
             request: tonic::Request<super::GetProofRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetProofResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetProofResponse>, tonic::Status>;
         async fn get_change_proof(
             &self,
             request: tonic::Request<super::GetChangeProofRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetChangeProofResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetChangeProofResponse>, tonic::Status>;
         async fn verify_change_proof(
             &self,
             request: tonic::Request<super::VerifyChangeProofRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::VerifyChangeProofResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::VerifyChangeProofResponse>, tonic::Status>;
         async fn commit_change_proof(
             &self,
             request: tonic::Request<super::CommitChangeProofRequest>,
@@ -289,10 +244,7 @@ pub mod db_server {
         async fn get_range_proof(
             &self,
             request: tonic::Request<super::GetRangeProofRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetRangeProofResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetRangeProofResponse>, tonic::Status>;
         async fn commit_range_proof(
             &self,
             request: tonic::Request<super::CommitRangeProofRequest>,
@@ -324,10 +276,7 @@ pub mod db_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -383,25 +332,17 @@ pub mod db_server {
                 "/sync.DB/GetMerkleRoot" => {
                     #[allow(non_camel_case_types)]
                     struct GetMerkleRootSvc<T: Db>(pub Arc<T>);
-                    impl<
-                        T: Db,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for GetMerkleRootSvc<T> {
+                    impl<T: Db> tonic::server::UnaryService<super::super::google::protobuf::Empty>
+                        for GetMerkleRootSvc<T>
+                    {
                         type Response = super::GetMerkleRootResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).get_merkle_root(request).await
-                            };
+                            let fut = async move { (*inner).get_merkle_root(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -431,13 +372,9 @@ pub mod db_server {
                 "/sync.DB/GetProof" => {
                     #[allow(non_camel_case_types)]
                     struct GetProofSvc<T: Db>(pub Arc<T>);
-                    impl<T: Db> tonic::server::UnaryService<super::GetProofRequest>
-                    for GetProofSvc<T> {
+                    impl<T: Db> tonic::server::UnaryService<super::GetProofRequest> for GetProofSvc<T> {
                         type Response = super::GetProofResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetProofRequest>,
@@ -473,21 +410,15 @@ pub mod db_server {
                 "/sync.DB/GetChangeProof" => {
                     #[allow(non_camel_case_types)]
                     struct GetChangeProofSvc<T: Db>(pub Arc<T>);
-                    impl<T: Db> tonic::server::UnaryService<super::GetChangeProofRequest>
-                    for GetChangeProofSvc<T> {
+                    impl<T: Db> tonic::server::UnaryService<super::GetChangeProofRequest> for GetChangeProofSvc<T> {
                         type Response = super::GetChangeProofResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetChangeProofRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).get_change_proof(request).await
-                            };
+                            let fut = async move { (*inner).get_change_proof(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -517,23 +448,17 @@ pub mod db_server {
                 "/sync.DB/VerifyChangeProof" => {
                     #[allow(non_camel_case_types)]
                     struct VerifyChangeProofSvc<T: Db>(pub Arc<T>);
-                    impl<
-                        T: Db,
-                    > tonic::server::UnaryService<super::VerifyChangeProofRequest>
-                    for VerifyChangeProofSvc<T> {
+                    impl<T: Db> tonic::server::UnaryService<super::VerifyChangeProofRequest>
+                        for VerifyChangeProofSvc<T>
+                    {
                         type Response = super::VerifyChangeProofResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::VerifyChangeProofRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).verify_change_proof(request).await
-                            };
+                            let fut = async move { (*inner).verify_change_proof(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -563,23 +488,17 @@ pub mod db_server {
                 "/sync.DB/CommitChangeProof" => {
                     #[allow(non_camel_case_types)]
                     struct CommitChangeProofSvc<T: Db>(pub Arc<T>);
-                    impl<
-                        T: Db,
-                    > tonic::server::UnaryService<super::CommitChangeProofRequest>
-                    for CommitChangeProofSvc<T> {
+                    impl<T: Db> tonic::server::UnaryService<super::CommitChangeProofRequest>
+                        for CommitChangeProofSvc<T>
+                    {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::CommitChangeProofRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).commit_change_proof(request).await
-                            };
+                            let fut = async move { (*inner).commit_change_proof(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -609,21 +528,15 @@ pub mod db_server {
                 "/sync.DB/GetRangeProof" => {
                     #[allow(non_camel_case_types)]
                     struct GetRangeProofSvc<T: Db>(pub Arc<T>);
-                    impl<T: Db> tonic::server::UnaryService<super::GetRangeProofRequest>
-                    for GetRangeProofSvc<T> {
+                    impl<T: Db> tonic::server::UnaryService<super::GetRangeProofRequest> for GetRangeProofSvc<T> {
                         type Response = super::GetRangeProofResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetRangeProofRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).get_range_proof(request).await
-                            };
+                            let fut = async move { (*inner).get_range_proof(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -653,23 +566,15 @@ pub mod db_server {
                 "/sync.DB/CommitRangeProof" => {
                     #[allow(non_camel_case_types)]
                     struct CommitRangeProofSvc<T: Db>(pub Arc<T>);
-                    impl<
-                        T: Db,
-                    > tonic::server::UnaryService<super::CommitRangeProofRequest>
-                    for CommitRangeProofSvc<T> {
+                    impl<T: Db> tonic::server::UnaryService<super::CommitRangeProofRequest> for CommitRangeProofSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::CommitRangeProofRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).commit_range_proof(request).await
-                            };
+                            let fut = async move { (*inner).commit_range_proof(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -696,18 +601,14 @@ pub mod db_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

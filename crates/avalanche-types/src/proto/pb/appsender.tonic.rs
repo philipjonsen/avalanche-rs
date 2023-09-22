@@ -2,8 +2,8 @@
 /// Generated client implementations.
 pub mod app_sender_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct AppSenderClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -47,9 +47,8 @@ pub mod app_sender_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             AppSenderClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -91,19 +90,14 @@ pub mod app_sender_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/appsender.AppSender/SendAppRequest",
-            );
+            let path = http::uri::PathAndQuery::from_static("/appsender.AppSender/SendAppRequest");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("appsender.AppSender", "SendAppRequest"));
@@ -116,19 +110,14 @@ pub mod app_sender_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/appsender.AppSender/SendAppResponse",
-            );
+            let path = http::uri::PathAndQuery::from_static("/appsender.AppSender/SendAppResponse");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("appsender.AppSender", "SendAppResponse"));
@@ -141,19 +130,14 @@ pub mod app_sender_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/appsender.AppSender/SendAppGossip",
-            );
+            let path = http::uri::PathAndQuery::from_static("/appsender.AppSender/SendAppGossip");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("appsender.AppSender", "SendAppGossip"));
@@ -166,22 +150,20 @@ pub mod app_sender_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/appsender.AppSender/SendAppGossipSpecific",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/appsender.AppSender/SendAppGossipSpecific");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("appsender.AppSender", "SendAppGossipSpecific"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "appsender.AppSender",
+                "SendAppGossipSpecific",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn send_cross_chain_app_request(
@@ -191,24 +173,21 @@ pub mod app_sender_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/appsender.AppSender/SendCrossChainAppRequest",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("appsender.AppSender", "SendCrossChainAppRequest"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "appsender.AppSender",
+                "SendCrossChainAppRequest",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn send_cross_chain_app_response(
@@ -218,24 +197,21 @@ pub mod app_sender_client {
             tonic::Response<super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/appsender.AppSender/SendCrossChainAppResponse",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("appsender.AppSender", "SendCrossChainAppResponse"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "appsender.AppSender",
+                "SendCrossChainAppResponse",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -313,10 +289,7 @@ pub mod app_sender_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -372,23 +345,15 @@ pub mod app_sender_server {
                 "/appsender.AppSender/SendAppRequest" => {
                     #[allow(non_camel_case_types)]
                     struct SendAppRequestSvc<T: AppSender>(pub Arc<T>);
-                    impl<
-                        T: AppSender,
-                    > tonic::server::UnaryService<super::SendAppRequestMsg>
-                    for SendAppRequestSvc<T> {
+                    impl<T: AppSender> tonic::server::UnaryService<super::SendAppRequestMsg> for SendAppRequestSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SendAppRequestMsg>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).send_app_request(request).await
-                            };
+                            let fut = async move { (*inner).send_app_request(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -418,23 +383,17 @@ pub mod app_sender_server {
                 "/appsender.AppSender/SendAppResponse" => {
                     #[allow(non_camel_case_types)]
                     struct SendAppResponseSvc<T: AppSender>(pub Arc<T>);
-                    impl<
-                        T: AppSender,
-                    > tonic::server::UnaryService<super::SendAppResponseMsg>
-                    for SendAppResponseSvc<T> {
+                    impl<T: AppSender> tonic::server::UnaryService<super::SendAppResponseMsg>
+                        for SendAppResponseSvc<T>
+                    {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SendAppResponseMsg>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).send_app_response(request).await
-                            };
+                            let fut = async move { (*inner).send_app_response(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -464,23 +423,15 @@ pub mod app_sender_server {
                 "/appsender.AppSender/SendAppGossip" => {
                     #[allow(non_camel_case_types)]
                     struct SendAppGossipSvc<T: AppSender>(pub Arc<T>);
-                    impl<
-                        T: AppSender,
-                    > tonic::server::UnaryService<super::SendAppGossipMsg>
-                    for SendAppGossipSvc<T> {
+                    impl<T: AppSender> tonic::server::UnaryService<super::SendAppGossipMsg> for SendAppGossipSvc<T> {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SendAppGossipMsg>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).send_app_gossip(request).await
-                            };
+                            let fut = async move { (*inner).send_app_gossip(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -510,23 +461,18 @@ pub mod app_sender_server {
                 "/appsender.AppSender/SendAppGossipSpecific" => {
                     #[allow(non_camel_case_types)]
                     struct SendAppGossipSpecificSvc<T: AppSender>(pub Arc<T>);
-                    impl<
-                        T: AppSender,
-                    > tonic::server::UnaryService<super::SendAppGossipSpecificMsg>
-                    for SendAppGossipSpecificSvc<T> {
+                    impl<T: AppSender> tonic::server::UnaryService<super::SendAppGossipSpecificMsg>
+                        for SendAppGossipSpecificSvc<T>
+                    {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SendAppGossipSpecificMsg>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).send_app_gossip_specific(request).await
-                            };
+                            let fut =
+                                async move { (*inner).send_app_gossip_specific(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -556,23 +502,19 @@ pub mod app_sender_server {
                 "/appsender.AppSender/SendCrossChainAppRequest" => {
                     #[allow(non_camel_case_types)]
                     struct SendCrossChainAppRequestSvc<T: AppSender>(pub Arc<T>);
-                    impl<
-                        T: AppSender,
-                    > tonic::server::UnaryService<super::SendCrossChainAppRequestMsg>
-                    for SendCrossChainAppRequestSvc<T> {
+                    impl<T: AppSender>
+                        tonic::server::UnaryService<super::SendCrossChainAppRequestMsg>
+                        for SendCrossChainAppRequestSvc<T>
+                    {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SendCrossChainAppRequestMsg>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).send_cross_chain_app_request(request).await
-                            };
+                            let fut =
+                                async move { (*inner).send_cross_chain_app_request(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -602,15 +544,12 @@ pub mod app_sender_server {
                 "/appsender.AppSender/SendCrossChainAppResponse" => {
                     #[allow(non_camel_case_types)]
                     struct SendCrossChainAppResponseSvc<T: AppSender>(pub Arc<T>);
-                    impl<
-                        T: AppSender,
-                    > tonic::server::UnaryService<super::SendCrossChainAppResponseMsg>
-                    for SendCrossChainAppResponseSvc<T> {
+                    impl<T: AppSender>
+                        tonic::server::UnaryService<super::SendCrossChainAppResponseMsg>
+                        for SendCrossChainAppResponseSvc<T>
+                    {
                         type Response = super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SendCrossChainAppResponseMsg>,
@@ -645,18 +584,14 @@ pub mod app_sender_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

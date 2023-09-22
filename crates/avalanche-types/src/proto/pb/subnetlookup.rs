@@ -1,12 +1,12 @@
 // @generated
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SubnetIdRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SubnetIdResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub id: ::prost::bytes::Bytes,
 }
 /// Encoded file descriptor set for the `subnetlookup` package

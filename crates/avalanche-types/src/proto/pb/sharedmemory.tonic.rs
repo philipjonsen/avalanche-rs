@@ -2,8 +2,8 @@
 /// Generated client implementations.
 pub mod shared_memory_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct SharedMemoryClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -47,9 +47,8 @@ pub mod shared_memory_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             SharedMemoryClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -88,19 +87,14 @@ pub mod shared_memory_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetRequest>,
         ) -> std::result::Result<tonic::Response<super::GetResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/sharedmemory.SharedMemory/Get",
-            );
+            let path = http::uri::PathAndQuery::from_static("/sharedmemory.SharedMemory/Get");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("sharedmemory.SharedMemory", "Get"));
@@ -109,23 +103,15 @@ pub mod shared_memory_client {
         pub async fn indexed(
             &mut self,
             request: impl tonic::IntoRequest<super::IndexedRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::IndexedResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::IndexedResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/sharedmemory.SharedMemory/Indexed",
-            );
+            let path = http::uri::PathAndQuery::from_static("/sharedmemory.SharedMemory/Indexed");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("sharedmemory.SharedMemory", "Indexed"));
@@ -135,19 +121,14 @@ pub mod shared_memory_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ApplyRequest>,
         ) -> std::result::Result<tonic::Response<super::ApplyResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/sharedmemory.SharedMemory/Apply",
-            );
+            let path = http::uri::PathAndQuery::from_static("/sharedmemory.SharedMemory/Apply");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("sharedmemory.SharedMemory", "Apply"));
@@ -198,10 +179,7 @@ pub mod shared_memory_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -257,13 +235,9 @@ pub mod shared_memory_server {
                 "/sharedmemory.SharedMemory/Get" => {
                     #[allow(non_camel_case_types)]
                     struct GetSvc<T: SharedMemory>(pub Arc<T>);
-                    impl<T: SharedMemory> tonic::server::UnaryService<super::GetRequest>
-                    for GetSvc<T> {
+                    impl<T: SharedMemory> tonic::server::UnaryService<super::GetRequest> for GetSvc<T> {
                         type Response = super::GetResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetRequest>,
@@ -299,15 +273,9 @@ pub mod shared_memory_server {
                 "/sharedmemory.SharedMemory/Indexed" => {
                     #[allow(non_camel_case_types)]
                     struct IndexedSvc<T: SharedMemory>(pub Arc<T>);
-                    impl<
-                        T: SharedMemory,
-                    > tonic::server::UnaryService<super::IndexedRequest>
-                    for IndexedSvc<T> {
+                    impl<T: SharedMemory> tonic::server::UnaryService<super::IndexedRequest> for IndexedSvc<T> {
                         type Response = super::IndexedResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::IndexedRequest>,
@@ -343,14 +311,9 @@ pub mod shared_memory_server {
                 "/sharedmemory.SharedMemory/Apply" => {
                     #[allow(non_camel_case_types)]
                     struct ApplySvc<T: SharedMemory>(pub Arc<T>);
-                    impl<
-                        T: SharedMemory,
-                    > tonic::server::UnaryService<super::ApplyRequest> for ApplySvc<T> {
+                    impl<T: SharedMemory> tonic::server::UnaryService<super::ApplyRequest> for ApplySvc<T> {
                         type Response = super::ApplyResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::ApplyRequest>,
@@ -383,18 +346,14 @@ pub mod shared_memory_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

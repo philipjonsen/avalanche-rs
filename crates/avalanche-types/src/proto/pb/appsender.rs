@@ -3,69 +3,69 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SendAppRequestMsg {
     /// The nodes to send this request to
-    #[prost(bytes="bytes", repeated, tag="1")]
+    #[prost(bytes = "bytes", repeated, tag = "1")]
     pub node_ids: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
     /// The ID of this request
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
     /// The request body
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub request: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SendAppResponseMsg {
     /// The node to send a response to
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub node_id: ::prost::bytes::Bytes,
     /// ID of this request
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
     /// The response body
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub response: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SendAppGossipMsg {
     /// The message body
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub msg: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SendAppGossipSpecificMsg {
     /// The nodes to send this request to
-    #[prost(bytes="bytes", repeated, tag="1")]
+    #[prost(bytes = "bytes", repeated, tag = "1")]
     pub node_ids: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
     /// The message body
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub msg: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SendCrossChainAppRequestMsg {
     /// The chain to send this request to
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
     /// the ID of this request
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
     /// The request body
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub request: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SendCrossChainAppResponseMsg {
     /// The chain to send this response to
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub chain_id: ::prost::bytes::Bytes,
     /// the ID of this request
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag = "2")]
     pub request_id: u32,
     /// The response body
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub response: ::prost::bytes::Bytes,
 }
 /// Encoded file descriptor set for the `appsender` package

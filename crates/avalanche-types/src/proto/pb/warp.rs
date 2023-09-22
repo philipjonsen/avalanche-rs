@@ -2,17 +2,17 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignRequest {
-    #[prost(uint32, tag="1")]
+    #[prost(uint32, tag = "1")]
     pub network_id: u32,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub source_chain_id: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub payload: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub signature: ::prost::bytes::Bytes,
 }
 /// Encoded file descriptor set for the `warp` package

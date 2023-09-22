@@ -2,8 +2,8 @@
 /// Generated client implementations.
 pub mod validator_state_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct ValidatorStateClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -47,9 +47,8 @@ pub mod validator_state_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             ValidatorStateClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -87,107 +86,88 @@ pub mod validator_state_client {
         pub async fn get_minimum_height(
             &mut self,
             request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetMinimumHeightResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetMinimumHeightResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/validatorstate.ValidatorState/GetMinimumHeight",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("validatorstate.ValidatorState", "GetMinimumHeight"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "validatorstate.ValidatorState",
+                "GetMinimumHeight",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_current_height(
             &mut self,
             request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetCurrentHeightResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetCurrentHeightResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/validatorstate.ValidatorState/GetCurrentHeight",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("validatorstate.ValidatorState", "GetCurrentHeight"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "validatorstate.ValidatorState",
+                "GetCurrentHeight",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_subnet_id(
             &mut self,
             request: impl tonic::IntoRequest<super::GetSubnetIdRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetSubnetIdResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetSubnetIdResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/validatorstate.ValidatorState/GetSubnetID",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/validatorstate.ValidatorState/GetSubnetID");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("validatorstate.ValidatorState", "GetSubnetID"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "validatorstate.ValidatorState",
+                "GetSubnetID",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_validator_set(
             &mut self,
             request: impl tonic::IntoRequest<super::GetValidatorSetRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetValidatorSetResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetValidatorSetResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/validatorstate.ValidatorState/GetValidatorSet",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("validatorstate.ValidatorState", "GetValidatorSet"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "validatorstate.ValidatorState",
+                "GetValidatorSet",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -202,31 +182,19 @@ pub mod validator_state_server {
         async fn get_minimum_height(
             &self,
             request: tonic::Request<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetMinimumHeightResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetMinimumHeightResponse>, tonic::Status>;
         async fn get_current_height(
             &self,
             request: tonic::Request<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetCurrentHeightResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetCurrentHeightResponse>, tonic::Status>;
         async fn get_subnet_id(
             &self,
             request: tonic::Request<super::GetSubnetIdRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetSubnetIdResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetSubnetIdResponse>, tonic::Status>;
         async fn get_validator_set(
             &self,
             request: tonic::Request<super::GetValidatorSetRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetValidatorSetResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetValidatorSetResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct ValidatorStateServer<T: ValidatorState> {
@@ -251,10 +219,7 @@ pub mod validator_state_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -310,25 +275,18 @@ pub mod validator_state_server {
                 "/validatorstate.ValidatorState/GetMinimumHeight" => {
                     #[allow(non_camel_case_types)]
                     struct GetMinimumHeightSvc<T: ValidatorState>(pub Arc<T>);
-                    impl<
-                        T: ValidatorState,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for GetMinimumHeightSvc<T> {
+                    impl<T: ValidatorState>
+                        tonic::server::UnaryService<super::super::google::protobuf::Empty>
+                        for GetMinimumHeightSvc<T>
+                    {
                         type Response = super::GetMinimumHeightResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).get_minimum_height(request).await
-                            };
+                            let fut = async move { (*inner).get_minimum_height(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -358,25 +316,18 @@ pub mod validator_state_server {
                 "/validatorstate.ValidatorState/GetCurrentHeight" => {
                     #[allow(non_camel_case_types)]
                     struct GetCurrentHeightSvc<T: ValidatorState>(pub Arc<T>);
-                    impl<
-                        T: ValidatorState,
-                    > tonic::server::UnaryService<super::super::google::protobuf::Empty>
-                    for GetCurrentHeightSvc<T> {
+                    impl<T: ValidatorState>
+                        tonic::server::UnaryService<super::super::google::protobuf::Empty>
+                        for GetCurrentHeightSvc<T>
+                    {
                         type Response = super::GetCurrentHeightResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).get_current_height(request).await
-                            };
+                            let fut = async move { (*inner).get_current_height(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -406,23 +357,17 @@ pub mod validator_state_server {
                 "/validatorstate.ValidatorState/GetSubnetID" => {
                     #[allow(non_camel_case_types)]
                     struct GetSubnetIDSvc<T: ValidatorState>(pub Arc<T>);
-                    impl<
-                        T: ValidatorState,
-                    > tonic::server::UnaryService<super::GetSubnetIdRequest>
-                    for GetSubnetIDSvc<T> {
+                    impl<T: ValidatorState> tonic::server::UnaryService<super::GetSubnetIdRequest>
+                        for GetSubnetIDSvc<T>
+                    {
                         type Response = super::GetSubnetIdResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetSubnetIdRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).get_subnet_id(request).await
-                            };
+                            let fut = async move { (*inner).get_subnet_id(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -452,23 +397,18 @@ pub mod validator_state_server {
                 "/validatorstate.ValidatorState/GetValidatorSet" => {
                     #[allow(non_camel_case_types)]
                     struct GetValidatorSetSvc<T: ValidatorState>(pub Arc<T>);
-                    impl<
-                        T: ValidatorState,
-                    > tonic::server::UnaryService<super::GetValidatorSetRequest>
-                    for GetValidatorSetSvc<T> {
+                    impl<T: ValidatorState>
+                        tonic::server::UnaryService<super::GetValidatorSetRequest>
+                        for GetValidatorSetSvc<T>
+                    {
                         type Response = super::GetValidatorSetResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetValidatorSetRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).get_validator_set(request).await
-                            };
+                            let fut = async move { (*inner).get_validator_set(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -495,18 +435,14 @@ pub mod validator_state_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

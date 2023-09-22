@@ -2,8 +2,8 @@
 /// Generated client implementations.
 pub mod signer_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct SignerClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -47,9 +47,8 @@ pub mod signer_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             SignerClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -88,19 +87,17 @@ pub mod signer_client {
             &mut self,
             request: impl tonic::IntoRequest<super::SignRequest>,
         ) -> std::result::Result<tonic::Response<super::SignResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/warp.Signer/Sign");
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new("warp.Signer", "Sign"));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("warp.Signer", "Sign"));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -140,10 +137,7 @@ pub mod signer_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -199,13 +193,9 @@ pub mod signer_server {
                 "/warp.Signer/Sign" => {
                     #[allow(non_camel_case_types)]
                     struct SignSvc<T: Signer>(pub Arc<T>);
-                    impl<T: Signer> tonic::server::UnaryService<super::SignRequest>
-                    for SignSvc<T> {
+                    impl<T: Signer> tonic::server::UnaryService<super::SignRequest> for SignSvc<T> {
                         type Response = super::SignResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SignRequest>,
@@ -238,18 +228,14 @@ pub mod signer_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

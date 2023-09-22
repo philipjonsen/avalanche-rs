@@ -3,17 +3,17 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WriteRequest {
     /// payload is the write request in bytes
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub payload: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WriteResponse {
     /// written is the length of payload in bytes
-    #[prost(int32, tag="1")]
+    #[prost(int32, tag = "1")]
     pub written: i32,
     /// error is an error message
-    #[prost(string, optional, tag="2")]
+    #[prost(string, optional, tag = "2")]
     pub error: ::core::option::Option<::prost::alloc::string::String>,
 }
 /// Encoded file descriptor set for the `io.writer` package

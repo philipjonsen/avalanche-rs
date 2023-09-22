@@ -4,31 +4,31 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Url {
     /// scheme is the url scheme name
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub scheme: ::prost::alloc::string::String,
     /// opaque is encoded opaque data
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub opaque: ::prost::alloc::string::String,
     /// user is username and password information
-    #[prost(message, optional, tag="3")]
+    #[prost(message, optional, tag = "3")]
     pub user: ::core::option::Option<Userinfo>,
     /// host can be in the format host or host:port
-    #[prost(string, tag="4")]
+    #[prost(string, tag = "4")]
     pub host: ::prost::alloc::string::String,
     /// path (relative paths may omit leading slash)
-    #[prost(string, tag="5")]
+    #[prost(string, tag = "5")]
     pub path: ::prost::alloc::string::String,
     /// raw_path is encoded path hint (see EscapedPath method)
-    #[prost(string, tag="6")]
+    #[prost(string, tag = "6")]
     pub raw_path: ::prost::alloc::string::String,
     /// force is append a query ('?') even if RawQuery is empty
-    #[prost(bool, tag="7")]
+    #[prost(bool, tag = "7")]
     pub force_query: bool,
     /// raw_query is encoded query values, without '?'
-    #[prost(string, tag="8")]
+    #[prost(string, tag = "8")]
     pub raw_query: ::prost::alloc::string::String,
     /// fragment is fragment for references, without '#'
-    #[prost(string, tag="9")]
+    #[prost(string, tag = "9")]
     pub fragment: ::prost::alloc::string::String,
 }
 /// UserInfo is net.Userinfo see: <https://pkg.go.dev/net/url#Userinfo>
@@ -36,30 +36,30 @@ pub struct Url {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Userinfo {
     /// username is the username for the user
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub username: ::prost::alloc::string::String,
     /// password is the password for the user
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub password: ::prost::alloc::string::String,
     /// password_set is a boolean which is true if the passord is set
-    #[prost(bool, tag="3")]
+    #[prost(bool, tag = "3")]
     pub password_set: bool,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Element {
     /// key is a element key in a key value pair
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub key: ::prost::alloc::string::String,
     /// values are a list of strings coresponding to the key
-    #[prost(string, repeated, tag="2")]
+    #[prost(string, repeated, tag = "2")]
     pub values: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Certificates {
     /// cert is the certificate body
-    #[prost(bytes="bytes", repeated, tag="1")]
+    #[prost(bytes = "bytes", repeated, tag = "1")]
     pub cert: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
 }
 /// ConnectionState is tls.ConnectionState see: <https://pkg.go.dev/crypto/tls#ConnectionState>
@@ -67,41 +67,41 @@ pub struct Certificates {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConnectionState {
     /// version is the TLS version used by the connection (e.g. VersionTLS12)
-    #[prost(uint32, tag="1")]
+    #[prost(uint32, tag = "1")]
     pub version: u32,
     /// handshake_complete is true if the handshake has concluded
-    #[prost(bool, tag="2")]
+    #[prost(bool, tag = "2")]
     pub handshake_complete: bool,
     /// did_resume is true if this connection was successfully resumed from a
     /// previous session with a session ticket or similar mechanism
-    #[prost(bool, tag="3")]
+    #[prost(bool, tag = "3")]
     pub did_resume: bool,
     /// cipher_suite is the cipher suite negotiated for the connection
-    #[prost(uint32, tag="4")]
+    #[prost(uint32, tag = "4")]
     pub cipher_suite: u32,
     /// negotiated_protocol is the application protocol negotiated with ALPN
-    #[prost(string, tag="5")]
+    #[prost(string, tag = "5")]
     pub negotiated_protocol: ::prost::alloc::string::String,
     /// server_name is the value of the Server Name Indication extension sent by
     /// the client
-    #[prost(string, tag="6")]
+    #[prost(string, tag = "6")]
     pub server_name: ::prost::alloc::string::String,
     /// peer_certificates are the parsed certificates sent by the peer, in the
     /// order in which they were sent
-    #[prost(message, optional, tag="7")]
+    #[prost(message, optional, tag = "7")]
     pub peer_certificates: ::core::option::Option<Certificates>,
     /// verified_chains is a list of one or more chains where the first element is
     /// PeerCertificates\[0\] and the last element is from Config.RootCAs (on the
     /// client side) or Config.ClientCAs (on the server side).
-    #[prost(message, repeated, tag="8")]
+    #[prost(message, repeated, tag = "8")]
     pub verified_chains: ::prost::alloc::vec::Vec<Certificates>,
     /// signed_certificate_timestamps is a list of SCTs provided by the peer
     /// through the TLS handshake for the leaf certificate, if any
-    #[prost(bytes="bytes", repeated, tag="9")]
+    #[prost(bytes = "bytes", repeated, tag = "9")]
     pub signed_certificate_timestamps: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
     /// ocsp_response is a stapled Online Certificate Status Protocol (OCSP)
     /// response provided by the peer for the leaf certificate, if any.
-    #[prost(bytes="bytes", tag="10")]
+    #[prost(bytes = "bytes", tag = "10")]
     pub ocsp_response: ::prost::bytes::Bytes,
 }
 /// Request is an http.Request see: <https://pkg.go.dev/net/http#Request>
@@ -109,58 +109,58 @@ pub struct ConnectionState {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Request {
     /// method specifies the HTTP method (GET, POST, PUT, etc.)
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub method: ::prost::alloc::string::String,
     /// url specifies either the URI being requested (for server requests)
     /// or the URL to access (for client requests)
-    #[prost(message, optional, tag="2")]
+    #[prost(message, optional, tag = "2")]
     pub url: ::core::option::Option<Url>,
     /// proto is the protocol version for incoming server requests
-    #[prost(string, tag="3")]
+    #[prost(string, tag = "3")]
     pub proto: ::prost::alloc::string::String,
     /// proto_major is the major version
-    #[prost(int32, tag="4")]
+    #[prost(int32, tag = "4")]
     pub proto_major: i32,
     /// proto_minor is the minor version
-    #[prost(int32, tag="5")]
+    #[prost(int32, tag = "5")]
     pub proto_minor: i32,
     /// header contains the request header fields either received
     /// by the server or to be sent by the client
-    #[prost(message, repeated, tag="6")]
+    #[prost(message, repeated, tag = "6")]
     pub header: ::prost::alloc::vec::Vec<Element>,
     /// body is the request payload in bytes
-    #[prost(bytes="bytes", tag="7")]
+    #[prost(bytes = "bytes", tag = "7")]
     pub body: ::prost::bytes::Bytes,
     /// content_length records the length of the associated content
-    #[prost(int64, tag="8")]
+    #[prost(int64, tag = "8")]
     pub content_length: i64,
     /// transfer_encoding lists the transfer encodings from outermost to
     /// innermost
-    #[prost(string, repeated, tag="9")]
+    #[prost(string, repeated, tag = "9")]
     pub transfer_encoding: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// host specifies the host on which the URL is sought
-    #[prost(string, tag="10")]
+    #[prost(string, tag = "10")]
     pub host: ::prost::alloc::string::String,
     /// form contains the parsed form data, including both the URL
     /// field's query parameters and the PATCH, POST, or PUT form data
-    #[prost(message, repeated, tag="11")]
+    #[prost(message, repeated, tag = "11")]
     pub form: ::prost::alloc::vec::Vec<Element>,
     /// post_form contains the parsed form data from PATCH, POST
     /// or PUT body parameters
-    #[prost(message, repeated, tag="12")]
+    #[prost(message, repeated, tag = "12")]
     pub post_form: ::prost::alloc::vec::Vec<Element>,
     /// trailer_keys specifies additional headers that are sent after the request
-    #[prost(string, repeated, tag="13")]
+    #[prost(string, repeated, tag = "13")]
     pub trailer_keys: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// remote_addr allows HTTP servers and other software to record
     /// the network address that sent the request
-    #[prost(string, tag="14")]
+    #[prost(string, tag = "14")]
     pub remote_addr: ::prost::alloc::string::String,
     /// request_uri is the unmodified request-target
-    #[prost(string, tag="15")]
+    #[prost(string, tag = "15")]
     pub request_uri: ::prost::alloc::string::String,
     /// tls connection state
-    #[prost(message, optional, tag="16")]
+    #[prost(message, optional, tag = "16")]
     pub tls: ::core::option::Option<ConnectionState>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -168,51 +168,51 @@ pub struct Request {
 pub struct ResponseWriter {
     /// header returns the header map that will be sent by
     /// WriteHeader.
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub header: ::prost::alloc::vec::Vec<Element>,
     /// server_addr is the address of the gRPC server hosting the Writer service
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub server_addr: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HttpRequest {
     /// response_writer is used by an HTTP handler to construct an HTTP response
-    #[prost(message, optional, tag="1")]
+    #[prost(message, optional, tag = "1")]
     pub response_writer: ::core::option::Option<ResponseWriter>,
     /// request is an http request
-    #[prost(message, optional, tag="2")]
+    #[prost(message, optional, tag = "2")]
     pub request: ::core::option::Option<Request>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HandleSimpleHttpRequest {
     /// method specifies the HTTP method (GET, POST, PUT, etc.)
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub method: ::prost::alloc::string::String,
     /// url specifies either the URI being requested
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub url: ::prost::alloc::string::String,
     /// headers contains the request header fields either received
     /// by the server or to be sent by the client
-    #[prost(message, repeated, tag="3")]
+    #[prost(message, repeated, tag = "3")]
     pub headers: ::prost::alloc::vec::Vec<Element>,
     /// body is the request payload in bytes
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub body: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HandleSimpleHttpResponse {
     /// code is the response code
-    #[prost(int32, tag="1")]
+    #[prost(int32, tag = "1")]
     pub code: i32,
     /// headers contains the request header fields either received
     /// by the server or to be sent by the client
-    #[prost(message, repeated, tag="2")]
+    #[prost(message, repeated, tag = "2")]
     pub headers: ::prost::alloc::vec::Vec<Element>,
     /// body is the response payload in bytes
-    #[prost(bytes="bytes", tag="3")]
+    #[prost(bytes = "bytes", tag = "3")]
     pub body: ::prost::bytes::Bytes,
 }
 /// Encoded file descriptor set for the `http` package

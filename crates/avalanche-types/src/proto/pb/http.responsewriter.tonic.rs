@@ -2,8 +2,8 @@
 /// Generated client implementations.
 pub mod writer_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct WriterClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -47,9 +47,8 @@ pub mod writer_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             WriterClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -88,19 +87,14 @@ pub mod writer_client {
             &mut self,
             request: impl tonic::IntoRequest<super::WriteRequest>,
         ) -> std::result::Result<tonic::Response<super::WriteResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/http.responsewriter.Writer/Write",
-            );
+            let path = http::uri::PathAndQuery::from_static("/http.responsewriter.Writer/Write");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("http.responsewriter.Writer", "Write"));
@@ -113,19 +107,15 @@ pub mod writer_client {
             tonic::Response<super::super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/http.responsewriter.Writer/WriteHeader",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/http.responsewriter.Writer/WriteHeader");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("http.responsewriter.Writer", "WriteHeader"));
@@ -133,26 +123,19 @@ pub mod writer_client {
         }
         pub async fn flush(
             &mut self,
-            request: impl tonic::IntoRequest<
-                super::super::super::google::protobuf::Empty,
-            >,
+            request: impl tonic::IntoRequest<super::super::super::google::protobuf::Empty>,
         ) -> std::result::Result<
             tonic::Response<super::super::super::google::protobuf::Empty>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/http.responsewriter.Writer/Flush",
-            );
+            let path = http::uri::PathAndQuery::from_static("/http.responsewriter.Writer/Flush");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("http.responsewriter.Writer", "Flush"));
@@ -160,23 +143,16 @@ pub mod writer_client {
         }
         pub async fn hijack(
             &mut self,
-            request: impl tonic::IntoRequest<
-                super::super::super::google::protobuf::Empty,
-            >,
+            request: impl tonic::IntoRequest<super::super::super::google::protobuf::Empty>,
         ) -> std::result::Result<tonic::Response<super::HijackResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/http.responsewriter.Writer/Hijack",
-            );
+            let path = http::uri::PathAndQuery::from_static("/http.responsewriter.Writer/Hijack");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("http.responsewriter.Writer", "Hijack"));
@@ -237,10 +213,7 @@ pub mod writer_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -296,13 +269,9 @@ pub mod writer_server {
                 "/http.responsewriter.Writer/Write" => {
                     #[allow(non_camel_case_types)]
                     struct WriteSvc<T: Writer>(pub Arc<T>);
-                    impl<T: Writer> tonic::server::UnaryService<super::WriteRequest>
-                    for WriteSvc<T> {
+                    impl<T: Writer> tonic::server::UnaryService<super::WriteRequest> for WriteSvc<T> {
                         type Response = super::WriteResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::WriteRequest>,
@@ -338,23 +307,15 @@ pub mod writer_server {
                 "/http.responsewriter.Writer/WriteHeader" => {
                     #[allow(non_camel_case_types)]
                     struct WriteHeaderSvc<T: Writer>(pub Arc<T>);
-                    impl<
-                        T: Writer,
-                    > tonic::server::UnaryService<super::WriteHeaderRequest>
-                    for WriteHeaderSvc<T> {
+                    impl<T: Writer> tonic::server::UnaryService<super::WriteHeaderRequest> for WriteHeaderSvc<T> {
                         type Response = super::super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::WriteHeaderRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                (*inner).write_header(request).await
-                            };
+                            let fut = async move { (*inner).write_header(request).await };
                             Box::pin(fut)
                         }
                     }
@@ -384,21 +345,15 @@ pub mod writer_server {
                 "/http.responsewriter.Writer/Flush" => {
                     #[allow(non_camel_case_types)]
                     struct FlushSvc<T: Writer>(pub Arc<T>);
-                    impl<
-                        T: Writer,
-                    > tonic::server::UnaryService<
-                        super::super::super::google::protobuf::Empty,
-                    > for FlushSvc<T> {
+                    impl<T: Writer>
+                        tonic::server::UnaryService<super::super::super::google::protobuf::Empty>
+                        for FlushSvc<T>
+                    {
                         type Response = super::super::super::google::protobuf::Empty;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move { (*inner).flush(request).await };
@@ -431,21 +386,15 @@ pub mod writer_server {
                 "/http.responsewriter.Writer/Hijack" => {
                     #[allow(non_camel_case_types)]
                     struct HijackSvc<T: Writer>(pub Arc<T>);
-                    impl<
-                        T: Writer,
-                    > tonic::server::UnaryService<
-                        super::super::super::google::protobuf::Empty,
-                    > for HijackSvc<T> {
+                    impl<T: Writer>
+                        tonic::server::UnaryService<super::super::super::google::protobuf::Empty>
+                        for HijackSvc<T>
+                    {
                         type Response = super::HijackResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
+                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(
                             &mut self,
-                            request: tonic::Request<
-                                super::super::super::google::protobuf::Empty,
-                            >,
+                            request: tonic::Request<super::super::super::google::protobuf::Empty>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move { (*inner).hijack(request).await };
@@ -475,18 +424,14 @@ pub mod writer_server {
                     };
                     Box::pin(fut)
                 }
-                _ => {
-                    Box::pin(async move {
-                        Ok(
-                            http::Response::builder()
-                                .status(200)
-                                .header("grpc-status", "12")
-                                .header("content-type", "application/grpc")
-                                .body(empty_body())
-                                .unwrap(),
-                        )
-                    })
-                }
+                _ => Box::pin(async move {
+                    Ok(http::Response::builder()
+                        .status(200)
+                        .header("grpc-status", "12")
+                        .header("content-type", "application/grpc")
+                        .body(empty_body())
+                        .unwrap())
+                }),
             }
         }
     }

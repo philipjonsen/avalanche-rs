@@ -3,46 +3,46 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Request {
-    #[prost(oneof="request::Message", tags="1, 2")]
+    #[prost(oneof = "request::Message", tags = "1, 2")]
     pub message: ::core::option::Option<request::Message>,
 }
 /// Nested message and enum types in `Request`.
 pub mod request {
     #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Message {
-        #[prost(message, tag="1")]
+        #[prost(message, tag = "1")]
         RangeProofRequest(super::SyncGetRangeProofRequest),
-        #[prost(message, tag="2")]
+        #[prost(message, tag = "2")]
         ChangeProofRequest(super::SyncGetChangeProofRequest),
     }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetMerkleRootResponse {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub root_hash: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetProofRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub key: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetProofResponse {
-    #[prost(message, optional, tag="1")]
+    #[prost(message, optional, tag = "1")]
     pub proof: ::core::option::Option<Proof>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Proof {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub key: ::prost::bytes::Bytes,
-    #[prost(message, optional, tag="2")]
+    #[prost(message, optional, tag = "2")]
     pub value: ::core::option::Option<MaybeBytes>,
-    #[prost(message, repeated, tag="3")]
+    #[prost(message, repeated, tag = "3")]
     pub proof: ::prost::alloc::vec::Vec<ProofNode>,
 }
 /// For use in sync client, which has a restriction on the size of
@@ -50,91 +50,91 @@ pub struct Proof {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SyncGetChangeProofRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub start_root_hash: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub end_root_hash: ::prost::bytes::Bytes,
-    #[prost(message, optional, tag="3")]
+    #[prost(message, optional, tag = "3")]
     pub start_key: ::core::option::Option<MaybeBytes>,
-    #[prost(message, optional, tag="4")]
+    #[prost(message, optional, tag = "4")]
     pub end_key: ::core::option::Option<MaybeBytes>,
-    #[prost(uint32, tag="5")]
+    #[prost(uint32, tag = "5")]
     pub key_limit: u32,
-    #[prost(uint32, tag="6")]
+    #[prost(uint32, tag = "6")]
     pub bytes_limit: u32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SyncGetChangeProofResponse {
-    #[prost(oneof="sync_get_change_proof_response::Response", tags="1, 2")]
+    #[prost(oneof = "sync_get_change_proof_response::Response", tags = "1, 2")]
     pub response: ::core::option::Option<sync_get_change_proof_response::Response>,
 }
 /// Nested message and enum types in `SyncGetChangeProofResponse`.
 pub mod sync_get_change_proof_response {
     #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Response {
-        #[prost(message, tag="1")]
+        #[prost(message, tag = "1")]
         ChangeProof(super::ChangeProof),
-        #[prost(message, tag="2")]
+        #[prost(message, tag = "2")]
         RangeProof(super::RangeProof),
     }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetChangeProofRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub start_root_hash: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub end_root_hash: ::prost::bytes::Bytes,
-    #[prost(message, optional, tag="3")]
+    #[prost(message, optional, tag = "3")]
     pub start_key: ::core::option::Option<MaybeBytes>,
-    #[prost(message, optional, tag="4")]
+    #[prost(message, optional, tag = "4")]
     pub end_key: ::core::option::Option<MaybeBytes>,
-    #[prost(uint32, tag="5")]
+    #[prost(uint32, tag = "5")]
     pub key_limit: u32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetChangeProofResponse {
-    #[prost(oneof="get_change_proof_response::Response", tags="1, 2")]
+    #[prost(oneof = "get_change_proof_response::Response", tags = "1, 2")]
     pub response: ::core::option::Option<get_change_proof_response::Response>,
 }
 /// Nested message and enum types in `GetChangeProofResponse`.
 pub mod get_change_proof_response {
     #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Response {
-        #[prost(message, tag="1")]
+        #[prost(message, tag = "1")]
         ChangeProof(super::ChangeProof),
         /// True iff server errored with merkledb.ErrInsufficientHistory.
-        #[prost(bool, tag="2")]
+        #[prost(bool, tag = "2")]
         RootNotPresent(bool),
     }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerifyChangeProofRequest {
-    #[prost(message, optional, tag="1")]
+    #[prost(message, optional, tag = "1")]
     pub proof: ::core::option::Option<ChangeProof>,
-    #[prost(message, optional, tag="2")]
+    #[prost(message, optional, tag = "2")]
     pub start_key: ::core::option::Option<MaybeBytes>,
-    #[prost(message, optional, tag="3")]
+    #[prost(message, optional, tag = "3")]
     pub end_key: ::core::option::Option<MaybeBytes>,
-    #[prost(bytes="bytes", tag="4")]
+    #[prost(bytes = "bytes", tag = "4")]
     pub expected_root_hash: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerifyChangeProofResponse {
     /// If empty, there was no error.
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub error: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CommitChangeProofRequest {
-    #[prost(message, optional, tag="1")]
+    #[prost(message, optional, tag = "1")]
     pub proof: ::core::option::Option<ChangeProof>,
 }
 /// For use in sync client, which has a restriction on the size of
@@ -142,105 +142,105 @@ pub struct CommitChangeProofRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SyncGetRangeProofRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub root_hash: ::prost::bytes::Bytes,
-    #[prost(message, optional, tag="2")]
+    #[prost(message, optional, tag = "2")]
     pub start_key: ::core::option::Option<MaybeBytes>,
-    #[prost(message, optional, tag="3")]
+    #[prost(message, optional, tag = "3")]
     pub end_key: ::core::option::Option<MaybeBytes>,
-    #[prost(uint32, tag="4")]
+    #[prost(uint32, tag = "4")]
     pub key_limit: u32,
-    #[prost(uint32, tag="5")]
+    #[prost(uint32, tag = "5")]
     pub bytes_limit: u32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetRangeProofRequest {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub root_hash: ::prost::bytes::Bytes,
-    #[prost(message, optional, tag="2")]
+    #[prost(message, optional, tag = "2")]
     pub start_key: ::core::option::Option<MaybeBytes>,
-    #[prost(message, optional, tag="3")]
+    #[prost(message, optional, tag = "3")]
     pub end_key: ::core::option::Option<MaybeBytes>,
-    #[prost(uint32, tag="4")]
+    #[prost(uint32, tag = "4")]
     pub key_limit: u32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetRangeProofResponse {
-    #[prost(message, optional, tag="1")]
+    #[prost(message, optional, tag = "1")]
     pub proof: ::core::option::Option<RangeProof>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CommitRangeProofRequest {
-    #[prost(message, optional, tag="1")]
+    #[prost(message, optional, tag = "1")]
     pub start_key: ::core::option::Option<MaybeBytes>,
-    #[prost(message, optional, tag="2")]
+    #[prost(message, optional, tag = "2")]
     pub range_proof: ::core::option::Option<RangeProof>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChangeProof {
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub start_proof: ::prost::alloc::vec::Vec<ProofNode>,
-    #[prost(message, repeated, tag="2")]
+    #[prost(message, repeated, tag = "2")]
     pub end_proof: ::prost::alloc::vec::Vec<ProofNode>,
-    #[prost(message, repeated, tag="3")]
+    #[prost(message, repeated, tag = "3")]
     pub key_changes: ::prost::alloc::vec::Vec<KeyChange>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RangeProof {
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub start: ::prost::alloc::vec::Vec<ProofNode>,
-    #[prost(message, repeated, tag="2")]
+    #[prost(message, repeated, tag = "2")]
     pub end: ::prost::alloc::vec::Vec<ProofNode>,
-    #[prost(message, repeated, tag="3")]
+    #[prost(message, repeated, tag = "3")]
     pub key_values: ::prost::alloc::vec::Vec<KeyValue>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ProofNode {
-    #[prost(message, optional, tag="1")]
+    #[prost(message, optional, tag = "1")]
     pub key: ::core::option::Option<SerializedPath>,
-    #[prost(message, optional, tag="2")]
+    #[prost(message, optional, tag = "2")]
     pub value_or_hash: ::core::option::Option<MaybeBytes>,
-    #[prost(map="uint32, bytes", tag="3")]
+    #[prost(map = "uint32, bytes", tag = "3")]
     pub children: ::std::collections::HashMap<u32, ::prost::bytes::Bytes>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct KeyChange {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub key: ::prost::bytes::Bytes,
-    #[prost(message, optional, tag="2")]
+    #[prost(message, optional, tag = "2")]
     pub value: ::core::option::Option<MaybeBytes>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SerializedPath {
-    #[prost(uint64, tag="1")]
+    #[prost(uint64, tag = "1")]
     pub nibble_length: u64,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub value: ::prost::bytes::Bytes,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MaybeBytes {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub value: ::prost::bytes::Bytes,
     /// If false, this is None.
     /// Otherwise this is Some.
-    #[prost(bool, tag="2")]
+    #[prost(bool, tag = "2")]
     pub is_nothing: bool,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct KeyValue {
-    #[prost(bytes="bytes", tag="1")]
+    #[prost(bytes = "bytes", tag = "1")]
     pub key: ::prost::bytes::Bytes,
-    #[prost(bytes="bytes", tag="2")]
+    #[prost(bytes = "bytes", tag = "2")]
     pub value: ::prost::bytes::Bytes,
 }
 /// Encoded file descriptor set for the `sync` package
